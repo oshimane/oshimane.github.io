@@ -491,14 +491,14 @@ footer{background:#fff;border-top:1px solid var(--line)}
         </div>
         <div class="plan">
           <div class="label">プレミアム（仮）</div>
-          <div class="pricerow"><span class="num" id="premPrice">480</span><span class="yen">円</span><span class="per">/月</span></div>
+          <div class="pricerow"><span class="num" id="premPrice">380</span><span class="yen">円</span><span class="per">/月</span></div>
           <div class="note">料金・内容ともに検証中。当落シミュ・カテゴリ無制限を予定。</div>
           <ul><li>カテゴリ無制限</li><li>当落シミュレーション</li><li>遠征の積立サポート</li><li>年間レポート</li></ul>
           <a class="btn btn-ghost btn-block" href="#register">事前登録して続報を待つ</a>
         </div>
         <div class="plan">
           <div class="label">ファミリー（仮）</div>
-          <div class="pricerow"><span class="num" id="famPrice">780</span><span class="yen">円</span><span class="per">/月</span></div>
+          <div class="pricerow"><span class="num" id="famPrice">680</span><span class="yen">円</span><span class="per">/月</span></div>
           <div class="note">料金・内容ともに検証中。2人で推し活を共有予定。</div>
           <ul><li>プレミアム全機能</li><li>2アカウント共有</li><li>共有カレンダー</li></ul>
           <a class="btn btn-ghost btn-block" href="#register">事前登録して続報を待つ</a>
@@ -572,11 +572,10 @@ footer{background:#fff;border-top:1px solid var(--line)}
     TRACK_EVENTS: true
   };
 
-  /* ---- 価格 A/B/C（?p= 指定 or 乱択バケッティング） ---- */
+  /* ---- 価格 A/B（2群・?p= 指定 or 乱択バケッティング。検出力UPのため3群→2群に削減） ---- */
   var PRICING = {
-    a: { premium: 480, family: 780, tag: "A" },
-    b: { premium: 580, family: 880, tag: "B" },
-    c: { premium: 380, family: 680, tag: "C" }
+    a: { premium: 380, family: 680, tag: "A" },
+    b: { premium: 580, family: 880, tag: "B" }
   };
   var VARIANT = "a";
   function resolveVariant(){
