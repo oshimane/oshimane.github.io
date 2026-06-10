@@ -132,6 +132,26 @@ section{scroll-margin-top:76px}
 .dash .tiles{display:flex;gap:10px;margin-top:14px}
 .dash .tiles div{flex:1;background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:12px;
   display:grid;place-items:center}
+/* hero phone mockup (v6.1) */
+.phone{position:relative;width:290px;max-width:100%;margin:0 auto;background:#241733;border-radius:40px;padding:12px;box-shadow:var(--sh-pop)}
+.phone:before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:20px;background:#241733;border-radius:0 0 14px 14px;z-index:3}
+.phone-screen{background:#fff7fb;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:18px 12px 14px}
+.ps-status{display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:#7a6b74;padding:0 8px}
+.ps-appbar{font-family:var(--font-display);font-weight:700;font-size:15px;color:#d61f69;padding:0 4px}
+.ps-appbar span{font-size:10.5px;color:#7a6b74;font-weight:700;font-family:inherit}
+.ps-mgr{background:linear-gradient(120deg,#ff5fa2,#8b5cf6);color:#fff;font-size:11px;font-weight:700;border-radius:12px;padding:8px 11px;line-height:1.55}
+.ps-card{background:#fff;border:1px solid #f0d9e6;border-radius:14px;padding:10px 11px;box-shadow:0 2px 10px rgba(214,31,105,.06)}
+.ps-h{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:#2b1b26}
+.ps-h b{margin-left:auto;font-family:var(--font-display);color:#d61f69;font-size:15px}
+.ps-cal{display:flex;gap:4px;margin-top:9px}
+.ps-cal .d{flex:1;text-align:center;font-size:9px;font-weight:800;color:#7a6b74}
+.ps-cal .d span{display:grid;place-items:center;margin-top:3px;height:22px;border-radius:7px;background:#fff0f6;font-size:9px;font-weight:800;color:#d61f69}
+.ps-cal .d.on span{background:linear-gradient(120deg,#ff5fa2,#8b5cf6);color:#fff}
+.ps-gauge{height:12px;border-radius:8px;background:#fff0f6;overflow:hidden;margin:9px 0 5px}
+.ps-gauge span{display:block;height:100%;background:linear-gradient(120deg,#ff5fa2,#8b5cf6)}
+.ps-sub{font-size:10px;font-weight:700;color:#7a6b74}
+.ps-feats{display:flex;gap:6px;flex-wrap:wrap}
+.ps-feats span{font-size:10px;font-weight:800;background:#fff;border:1px solid #f0d9e6;border-radius:999px;padding:5px 9px;color:#2b1b26}
 
 /* sections shells */
 .sec{padding:48px 0}
@@ -375,26 +395,32 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <a class="btn btn-ghost" href="#features">できることを見る</a>
         </div>
         <div class="proof">
-          <span class="count-pill">事前登録 <span class="n js-count">0</span> 人</span>
+          <span class="count-pill js-countpill">事前登録 受付中</span>
           <span class="badge b-mint">iOS / Android 両対応</span>
         </div>
         <div class="note">データはスマホ内に保存・サーバー送信なし</div>
       </div>
-      <div class="dash">
-        <div class="inner">
-          <div class="top"><b>今月、推しに使えるお金</b><span class="badge b-mint">あと ¥11,600</span></div>
-          <div class="mgr">マネージャーより：いいペースだよ◎</div>
-          <div class="big">¥38,400</div>
-          <div class="gauge-row"><span>今月の予算</span><span class="v">72%</span></div>
-          <div class="gauge"><span data-v="72"></span></div>
-          <div style="height:12px"></div>
-          <div class="gauge-row"><span>チケット代</span><span class="v">48%</span></div>
-          <div class="gauge"><span data-v="48"></span></div>
-        </div>
-        <div class="tiles">
-          <div><svg class="ic-sm"><use href="#ic-calendar"></use></svg></div>
-          <div><svg class="ic-sm"><use href="#ic-penlight"></use></svg></div>
-          <div><svg class="ic-sm"><use href="#ic-coin"></use></svg></div>
+      <div class="phone" role="img" aria-label="推し活マネージャーのアプリ画面イメージ">
+        <div class="phone-screen">
+          <div class="ps-status"><span>9:41</span><span>●●●&nbsp;⚡</span></div>
+          <div class="ps-appbar">推しマネ <span>あなたの専属マネージャー</span></div>
+          <div class="ps-mgr">マネージャーより：次の遠征、ホテルの無料キャンセル期限まで先に押さえておいたよ◎</div>
+          <div class="ps-card">
+            <div class="ps-h">🗓 参戦カレンダー</div>
+            <div class="ps-cal">
+              <div class="d">月<span>11</span></div>
+              <div class="d on">火<span>LIVE</span></div>
+              <div class="d">水<span>13</span></div>
+              <div class="d on">木<span>当落</span></div>
+              <div class="d">金<span>15</span></div>
+            </div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-h">💰 今月、使えるお金<b>¥38,400</b></div>
+            <div class="ps-gauge"><span style="width:72%"></span></div>
+            <div class="ps-sub">予算の72%・あと ¥11,600（はみ出す前にそっとお知らせ）</div>
+          </div>
+          <div class="ps-feats"><span>🎫 当落シミュ</span><span>⏳ 遠征防衛</span><span>🤝 立替・名義</span></div>
         </div>
       </div>
     </div>
@@ -437,7 +463,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <div class="kicker">PRE-REGISTER</div>
         <h2>先に、席をおさえておく。</h2>
         <p class="lead">リリースしたら、マネージャーがいちばんにご連絡します。事前登録は無料です。</p>
-        <div class="reg-count">現在 <span class="n js-count">0</span> 人が事前登録</div>
+        <div class="reg-count js-countreg">事前登録 受付中</div>
         <form id="regForm" class="reg-form" novalidate>
           <label class="field" style="flex:1"><input id="regEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@oshi.jp" aria-label="メールアドレス"></label>
           <button class="btn btn-primary" type="submit">無料で事前登録する</button>
@@ -456,8 +482,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
     </div>
   </section>
 
-  <!-- ============ VOICES ============ -->
-  <section class="sec white">
+  <!-- ============ VOICES ============ （最初は非表示。実際のベータ声が集まったら下の section から style="display:none" を外す） -->
+  <section class="sec white" style="display:none" data-voices>
     <div class="wrap">
       <div class="head">
         <div class="kicker">BETA VOICES</div>
@@ -570,6 +596,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
     ENDPOINT: "",
     // 事前登録の表示人数（★実数のみ。スプレッドシートの実登録数を時々ここへ反映する。架空の数字は入れない）
     REGISTERED_COUNT: 0,
+    // 事前登録者がこの人数に達するまでは数を出さず「受付中」表示（ある程度集まってから人数を公開）。実数がこの値以上で「N 人」表示
+    COUNT_MIN_SHOW: 50,
     // 計測イベント（page_view / cta_click）を送るか
     TRACK_EVENTS: true
   };
@@ -637,6 +665,15 @@ footer{background:#fff;border-top:1px solid var(--line)}
     requestAnimationFrame(tick);
   }
 
+  /* ---- 表示人数（しきい値未満は「受付中」、以上で「N 人」） ---- */
+  function renderCount(n){
+    var showNum = n >= (CONFIG.COUNT_MIN_SHOW || 50);
+    var pill = document.querySelector(".js-countpill");
+    var reg = document.querySelector(".js-countreg");
+    if(pill) pill.innerHTML = showNum ? ('事前登録 <span class="n">' + fmt(n) + '</span> 人') : '事前登録 受付中';
+    if(reg) reg.innerHTML = showNum ? ('現在 <span class="n">' + fmt(n) + '</span> 人が事前登録') : '事前登録 受付中・公開準備中';
+  }
+
   /* ---- ゲージのアニメーション（0→目標） ---- */
   function animateGauges(){
     var spans = document.querySelectorAll(".gauge > span");
@@ -667,9 +704,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
       form.classList.add("hidden");
       ok.classList.remove("hidden");
       // カウント +1（軽いアニメーション）
-      var from = current;
       current += 1;
-      animateCounts(from, current, 500);
+      renderCount(current);
     });
   }
 
@@ -704,7 +740,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
   function init(){
     applyPricing();
     animateGauges();
-    animateCounts(0, current, 1300);
+    renderCount(current);
     initForm();
     initFaq();
     initSticky();
