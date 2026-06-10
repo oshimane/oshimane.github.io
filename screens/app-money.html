@@ -1,0 +1,287 @@
+<!-- @dsCard group="App" viewport="430x1180" name="App — お金の見通し画面" subtitle="推し活マネージャー：残高予測・破産シミュ・積立逆算（全SVG・開発中イメージ）" -->
+<!-- @startingPoint section="App" subtitle="推し活マネージャー お金の見通し画面 スマホモック" viewport="430x1180" -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>推し活マネージャー — お金の見通し</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --oshi-pink:#ff5fa2; --oshi-pink-deep:#d61f69; --purple:#8b5cf6; --purple-deep:#6d28d9;
+  --gold:#f59e0b; --gold-ink:#b45309; --mint:#34d399; --mint-ink:#0f9d6b;
+  --blue:#5b9be6; --blue-ink:#2f6fbf;
+  --cream:#fff7fb; --white:#fff; --ink:#2b1b26; --ink-muted:#7a6b74; --line:#f3e3ec;
+  --pink-soft:#ffe6f1; --purple-soft:#ede4ff; --gold-soft:#fdeccc; --mint-soft:#d6f7ec; --blue-soft:#e2eefb;
+  --grad-primary:linear-gradient(120deg,#ff5fa2 0%,#b06bf0 55%,#8b5cf6 100%);
+  --font-body:"Zen Maru Gothic",system-ui,-apple-system,sans-serif;
+  --font-display:"Kaisei Decol","Zen Maru Gothic",serif;
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-pill:99px;
+  --sh-card:0 8px 22px rgba(214,31,105,.07);
+  --sh-pop:0 14px 40px rgba(214,31,105,.16);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:28px 16px;
+  background:radial-gradient(120% 120% at 50% 0%,#f7ecf4 0%,#efe2ed 100%);
+  font-family:var(--font-body);-webkit-font-smoothing:antialiased}
+
+.phone{width:390px;max-width:100%;background:#1f1430;border-radius:46px;padding:11px;
+  box-shadow:0 36px 80px rgba(31,20,48,.42);position:relative}
+.notch{position:absolute;top:21px;left:50%;transform:translateX(-50%);width:120px;height:30px;
+  background:#1f1430;border-radius:99px;z-index:6}
+.screen{position:relative;background:var(--cream);border-radius:36px;overflow:hidden;height:812px;
+  display:flex;flex-direction:column}
+
+.status{display:flex;justify-content:space-between;align-items:center;padding:12px 26px 6px;
+  color:#fff;font-weight:700;font-size:13px;position:relative;z-index:4}
+.status .r{display:flex;gap:6px;align-items:center;font-size:11px;letter-spacing:.04em}
+
+.hdr{background:var(--grad-primary);background-size:200% 200%;animation:drift 10s var(--ease) infinite alternate;
+  padding:0 0 16px;border-radius:0 0 24px 24px}
+@keyframes drift{from{background-position:0% 50%}to{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){.hdr{animation:none}}
+.hdr .bar{display:flex;align-items:center;justify-content:space-between;padding:2px 20px 0}
+.hdr .title{display:flex;align-items:center;gap:9px;color:#fff}
+.hdr .title b{font-family:var(--font-display);font-weight:700;font-size:18px}
+.dev-tag{font-size:10px;font-weight:700;color:#fff;background:rgba(255,255,255,.22);padding:4px 9px;
+  border-radius:var(--r-pill)}
+/* hero money */
+.money-hero{margin:12px 20px 0;background:rgba(255,255,255,.96);border-radius:var(--r-lg);
+  padding:15px 16px;box-shadow:0 8px 20px rgba(31,20,48,.14)}
+.money-hero .lab{font-weight:900;font-size:12px;color:var(--ink-muted)}
+.money-hero .amt{font-family:var(--font-display);font-weight:700;font-size:34px;color:var(--oshi-pink-deep);
+  line-height:1.05;font-feature-settings:"tnum" 1;margin:2px 0 10px}
+.money-hero .amt small{font-size:15px}
+.grow{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:12px;margin-bottom:6px}
+.grow .v{font-family:var(--font-display);color:var(--oshi-pink-deep);font-size:14px}
+.gauge{position:relative;height:14px;border-radius:var(--r-pill);
+  background:linear-gradient(90deg,#34d399 0%,#f59e0b 60%,#ff5fa2 100%);overflow:hidden}
+.gauge>span{position:absolute;top:0;right:0;height:100%;background:var(--pink-soft);transition:width 2.2s var(--ease)}
+
+.content{flex:1;overflow-y:auto;padding:14px 16px 14px}
+.content::-webkit-scrollbar{width:0}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);box-shadow:var(--sh-card);padding:15px}
+.sec-h{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.sec-h .k{font-family:var(--font-display);font-weight:700;text-transform:uppercase;letter-spacing:.14em;
+  font-size:10px;color:var(--oshi-pink-deep)}
+.sec-t{font-weight:900;font-size:14.5px;color:var(--ink);margin:2px 0 10px}
+.block{margin-top:16px}
+
+/* legends */
+.lgrow{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.lg{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--ink)}
+.lg svg{flex:0 0 auto}
+
+/* line chart annotation */
+.callout{display:inline-flex;align-items:center;gap:5px;background:var(--gold-soft);color:var(--gold-ink);
+  font-weight:900;font-size:11px;padding:5px 10px;border-radius:var(--r-pill);margin-top:10px}
+
+/* bankruptcy sim */
+.toggle-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.toggle{display:inline-flex;align-items:center;gap:8px;font-weight:900;font-size:13px;color:var(--ink)}
+.sw{width:42px;height:24px;border-radius:99px;background:var(--purple);position:relative;flex:0 0 auto}
+.sw:after{content:"";position:absolute;top:3px;right:3px;width:18px;height:18px;border-radius:99px;background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sim{display:flex;gap:16px;align-items:flex-end;margin-top:14px}
+.bar-col{width:74px;flex:0 0 auto;display:flex;flex-direction:column;justify-content:flex-end;gap:0}
+.seg{border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:10px;
+  color:#fff;text-align:center;line-height:1.1}
+.seg.dream{background:transparent;color:var(--purple-deep);border:1.5px dashed #bda6ee;margin-bottom:5px;border-radius:8px}
+.seg.blue{background:var(--blue)}
+.seg.green{background:var(--mint);color:#0a6b48}
+.sim-legend{flex:1;display:flex;flex-direction:column;gap:9px}
+.sl{display:flex;align-items:flex-start;gap:8px}
+.sl .dot{width:13px;height:13px;border-radius:4px;flex:0 0 auto;margin-top:2px}
+.sl .tx b{font-weight:900;font-size:12px;color:var(--ink);display:block}
+.sl .tx small{font-weight:700;font-size:10.5px;color:var(--ink-muted)}
+.sl .tx .y{font-family:var(--font-display);color:var(--ink)}
+.verdict{margin-top:14px;background:linear-gradient(120deg,#fff3f8,#f6efff);border:1px solid var(--line);
+  border-radius:var(--r-md);padding:13px 14px;display:flex;align-items:center;gap:11px}
+.verdict .big{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--oshi-pink-deep);line-height:1.3}
+.verdict .big em{font-style:normal;font-size:24px}
+.verdict small{display:block;font-weight:700;font-size:11px;color:var(--ink-muted);margin-top:2px}
+
+/* savings reverse-calc */
+.save{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.save-item{border:1px solid var(--line);border-radius:var(--r-md);padding:12px;background:#fff}
+.save-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}
+.save-top .nm{font-weight:900;font-size:13px;color:var(--ink);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.badge{display:inline-flex;align-items:center;gap:4px;font-weight:900;font-size:10px;padding:4px 9px;
+  border-radius:var(--r-pill)}
+.b-lottery{background:#fff;color:var(--gold-ink);border:1.5px dashed var(--gold)}
+.b-fixed{background:var(--oshi-pink);color:#fff}
+.save-amt{font-family:var(--font-display);font-weight:700;font-size:13px;color:var(--oshi-pink-deep);
+  font-feature-settings:"tnum" 1;white-space:nowrap;flex:0 0 auto}
+.pbar{height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbar>span{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#ff8fc0,#ff5fa2)}
+.pbar.ok>span{background:linear-gradient(90deg,#5fd9aa,#34d399)}
+.save-hint{font-weight:700;font-size:11.5px;color:var(--ink-muted);margin-top:8px;display:flex;align-items:center;gap:6px}
+.save-hint.good{color:var(--mint-ink)}
+
+/* kuroko advice */
+.advice{display:flex;gap:11px;align-items:flex-start;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);box-shadow:var(--sh-card);padding:14px;margin-top:16px}
+.advice svg{flex:0 0 auto}
+.advice .tx{font-weight:700;font-size:13px;color:var(--ink);line-height:1.7}
+.advice .tx b{color:var(--oshi-pink-deep)}
+.advice .tx small{display:block;color:var(--ink-muted);font-size:11px;font-weight:700;margin-top:3px}
+.note-dev{text-align:center;font-size:10px;font-weight:700;color:var(--ink-muted);margin:14px 0 2px}
+
+.tabs{display:flex;border-top:1px solid var(--line);background:rgba(255,255,255,.96);backdrop-filter:blur(8px);
+  padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
+.tab{flex:1;border:none;background:transparent;cursor:pointer;display:flex;flex-direction:column;align-items:center;
+  gap:3px;padding:4px 0}
+.tab .ti{width:26px;height:26px;display:grid;place-items:center;border-radius:9px}
+.tab.active .ti{background:var(--pink-soft)}
+.tab span{font-weight:700;font-size:10px;color:var(--ink-muted)}
+.tab.active span{color:var(--oshi-pink-deep);font-weight:900}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="kuroko" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="20" fill="#2b1b26"></circle>
+    <path d="M20 8c-6 0-9 4-9 10 0 5 0 9 0 12h18c0-3 0-7 0-12 0-6-3-10-9-10z" fill="#1c1020"></path>
+    <ellipse cx="15.5" cy="20" rx="2.1" ry="2.6" fill="#fff"></ellipse>
+    <ellipse cx="24.5" cy="20" rx="2.1" ry="2.6" fill="#fff"></ellipse>
+    <circle cx="15.8" cy="20.6" r="1" fill="#2b1b26"></circle>
+    <circle cx="24.8" cy="20.6" r="1" fill="#2b1b26"></circle>
+    <path d="M16 26q4 3 8 0" stroke="#ff5fa2" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+  </symbol>
+  <symbol id="t-cal" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="15" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M4 10h16M8 3.5v4M16 3.5v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><circle cx="12" cy="15" r="1.8" fill="currentColor"></circle></symbol>
+  <symbol id="t-money" viewBox="0 0 24 24"><ellipse cx="12" cy="8" rx="8" ry="3.2" fill="none" stroke="currentColor" stroke-width="2"></ellipse><path d="M4 8v8c0 1.8 3.6 3.2 8 3.2s8-1.4 8-3.2V8" fill="none" stroke="currentColor" stroke-width="2"></path></symbol>
+  <symbol id="t-lot" viewBox="0 0 24 24"><rect x="6" y="4" width="9" height="16" rx="4.5" fill="none" stroke="currentColor" stroke-width="2"></rect><path d="M10.5 9c.2-1.4 4-1.4 4 .6 0 1.5-2 1.5-2 3M10.5 17.5v.1" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path></symbol>
+  <symbol id="t-set" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></symbol>
+</svg>
+
+<div class="phone">
+  <div class="notch"></div>
+  <div class="screen">
+    <!-- header -->
+    <div class="hdr">
+      <div class="status"><span>9:41</span><span class="r"><span>5G</span><span>100%</span></span></div>
+      <div class="bar">
+        <div class="title"><svg width="22" height="22"><use href="#kuroko"></use></svg><b>お金の見通し</b></div>
+        <span class="dev-tag">開発中のイメージ</span>
+      </div>
+      <div class="money-hero">
+        <div class="lab">今月、推しに使えるお金</div>
+        <div class="amt">¥38,400</div>
+        <div class="grow"><span>今月の予算</span><span class="v">72%</span></div>
+        <div class="gauge"><span data-v="72"></span></div>
+      </div>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+
+      <!-- 2) 残高予測 -->
+      <div class="card block" style="margin-top:4px">
+        <div class="sec-h"><span class="k">FORECAST</span></div>
+        <div class="sec-t">残高予測 — このあと数ヶ月</div>
+        <svg viewBox="0 0 340 150" width="100%" role="img" aria-label="残高予測の折れ線グラフ">
+          <!-- baseline (0円) -->
+          <line x1="30" y1="118" x2="326" y2="118" stroke="#e7c8d8" stroke-width="1.5" stroke-dasharray="4 4"></line>
+          <text x="30" y="133" font-family="Zen Maru Gothic,sans-serif" font-size="9" font-weight="700" fill="#7a6b74">0円ライン</text>
+          <!-- 積立なし（グレー点線・谷が深い） -->
+          <polyline points="36,28 93,96 150,84 208,68 265,78 322,62" fill="none" stroke="#c4b6bf" stroke-width="2.4" stroke-dasharray="5 4" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <!-- 積立あり（ピンク実線・谷が浅い） -->
+          <polyline points="36,28 93,70 150,58 208,46 265,50 322,34" fill="none" stroke="#ff5fa2" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline>
+          <!-- 谷マーカー（8月・積立なし） -->
+          <circle cx="93" cy="96" r="4.5" fill="#fff" stroke="#c4b6bf" stroke-width="2.4"></circle>
+          <circle cx="93" cy="70" r="4.5" fill="#fff" stroke="#ff5fa2" stroke-width="3"></circle>
+          <!-- month labels -->
+          <g font-family="Zen Maru Gothic,sans-serif" font-size="10" font-weight="700" fill="#7a6b74" text-anchor="middle">
+            <text x="36" y="146">7月</text><text x="93" y="146">8月</text><text x="150" y="146">9月</text>
+            <text x="208" y="146">10月</text><text x="265" y="146">11月</text><text x="322" y="146">12月</text>
+          </g>
+        </svg>
+        <div class="lgrow">
+          <span class="lg"><svg width="22" height="8"><line x1="1" y1="4" x2="21" y2="4" stroke="#ff5fa2" stroke-width="3" stroke-linecap="round"/></svg>積立あり（谷が浅い）</span>
+          <span class="lg"><svg width="22" height="8"><line x1="1" y1="4" x2="21" y2="4" stroke="#c4b6bf" stroke-width="2.4" stroke-dasharray="5 4" stroke-linecap="round"/></svg>積立なし（谷が深い）</span>
+        </div>
+        <div class="callout">8月が谷 ¥9,000 — 積立があれば、ここを越えられそう</div>
+      </div>
+
+      <!-- 3) 破産シミュ -->
+      <div class="card block">
+        <div class="toggle-h">
+          <span class="toggle">「全部当たったら？」でシミュ</span>
+          <span class="sw" role="switch" aria-checked="true"></span>
+        </div>
+        <div class="sim">
+          <div class="bar-col">
+            <div class="seg dream" style="height:48px">妄想分<br>+5万</div>
+            <div class="seg blue" style="height:38px">立替 4万</div>
+            <div class="seg green" style="height:114px">自己負担<br>12万</div>
+          </div>
+          <div class="sim-legend">
+            <div class="sl"><span class="dot" style="background:var(--mint)"></span><div class="tx"><b>自己負担（ネット）</b><small><span class="y">¥12万</span>・実際に出ていくお金</small></div></div>
+            <div class="sl"><span class="dot" style="background:var(--blue)"></span><div class="tx"><b>回収待ち（立替）</b><small><span class="y">¥4万</span>・あとで戻ってくる分</small></div></div>
+            <div class="sl"><span class="dot" style="background:#fff;border:1.5px dashed #bda6ee"></span><div class="tx"><b>妄想分（行ってみたい）</b><small><span class="y">+¥5万</span>・まだ決めてない分</small></div></div>
+            <div class="sl"><span class="dot" style="background:linear-gradient(#34d399,#5b9be6)"></span><div class="tx"><b>グロス（カード請求ピーク）</b><small><span class="y">¥16万</span>・自己負担＋立替</small></div></div>
+          </div>
+        </div>
+        <div class="verdict">
+          <svg width="34" height="34"><use href="#kuroko"></use></svg>
+          <div class="big">全部当たると <em>¥12万</em> 足りないかも<small>大丈夫、まだ調整できるよ。下で一緒に考えよ◎</small></div>
+        </div>
+      </div>
+
+      <!-- 4) 積立（逆算） -->
+      <div class="card block">
+        <div class="sec-h"><span class="k">SAVINGS</span></div>
+        <div class="sec-t">積立 — ゴールから逆算</div>
+        <div class="save">
+          <div class="save-item">
+            <div class="save-top">
+              <span class="nm">遠征A <span class="badge b-lottery">当落待ち</span></span>
+              <span class="save-amt">¥2万 / ¥5万</span>
+            </div>
+            <div class="pbar"><span style="width:40%"></span></div>
+            <div class="save-hint">あと月 ¥1万 × 3ヶ月で間に合う</div>
+          </div>
+          <div class="save-item">
+            <div class="save-top">
+              <span class="nm">ライブC <span class="badge b-fixed">確定</span></span>
+              <span class="save-amt">¥4.7万 / ¥5万</span>
+            </div>
+            <div class="pbar ok"><span style="width:94%"></span></div>
+            <div class="save-hint good">◎ あと ¥3千。ほぼOK</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5) 黒子コピー -->
+      <div class="advice">
+        <svg width="36" height="36"><use href="#kuroko"></use></svg>
+        <div class="tx">全部は厳しいかも。<b>月¥1万増やす</b>か、<b>1件選ぶ</b>？<small>決めるのはあなた。マネージャーは、どっちでも支えます。</small></div>
+      </div>
+
+      <div class="note-dev">※ 数値はすべてサンプルです。これは開発中のイメージで、実際の画面とは異なります。</div>
+    </div>
+
+    <!-- tab bar -->
+    <div class="tabs">
+      <button class="tab"><span class="ti" style="color:var(--ink-muted)"><svg width="24" height="24"><use href="#t-cal"></use></svg></span><span>カレンダー</span></button>
+      <button class="tab active"><span class="ti" style="color:var(--oshi-pink-deep)"><svg width="24" height="24"><use href="#t-money"></use></svg></span><span>お金</span></button>
+      <button class="tab"><span class="ti" style="color:var(--ink-muted)"><svg width="24" height="24"><use href="#t-lot"></use></svg></span><span>当落</span></button>
+      <button class="tab"><span class="ti" style="color:var(--ink-muted)"><svg width="24" height="24"><use href="#t-set"></use></svg></span><span>設定</span></button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // gauge fill 0→目標
+  document.querySelectorAll(".gauge > span").forEach(function(s){
+    var v = parseFloat(s.getAttribute("data-v")) || 0;
+    requestAnimationFrame(function(){ s.style.width = (100 - v) + "%"; });
+  });
+})();
+</script>
+</body>
+</html>
