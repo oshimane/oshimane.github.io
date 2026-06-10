@@ -630,14 +630,15 @@ footer{background:#fff;border-top:1px solid var(--line)}
     if(v) v.textContent = cfg.tag;
   }
 
-  /* ---- 計測＆送信（GETパラメータ方式。POSTはApps Scriptリダイレクト時にGET変換されるため） ---- */
+  /* ---- 計測＆送信（POSTボディ方式。PII(メール)をURLに乗せない＋Referer抑制。Apps Script doPostが受信） ---- */
   function send(payload){
     if(!CONFIG.ENDPOINT) return;
     try{
-      var qs = Object.keys(payload).map(function(k){
-        return encodeURIComponent(k)+"="+encodeURIComponent(String(payload[k]||""));
-      }).join("&");
-      fetch(CONFIG.ENDPOINT+"?"+qs, {method:"GET", mode:"no-cors", keepalive:true});
+      fetch(CONFIG.ENDPOINT, {
+        method:"POST", mode:"no-cors", keepalive:true, referrerPolicy:"no-referrer",
+        headers:{"Content-Type":"text/plain;charset=utf-8"},
+        body: JSON.stringify(payload)
+      });
     }catch(e){}
   }
   function track(type, extra){
