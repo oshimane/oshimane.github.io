@@ -133,25 +133,37 @@ section{scroll-margin-top:76px}
 .dash .tiles div{flex:1;background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:12px;
   display:grid;place-items:center}
 /* hero phone mockup (v6.1) */
-.phone{position:relative;width:290px;max-width:100%;margin:0 auto;background:#241733;border-radius:40px;padding:12px;box-shadow:var(--sh-pop)}
-.phone:before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:20px;background:#241733;border-radius:0 0 14px 14px;z-index:3}
-.phone-screen{background:#fff7fb;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:18px 12px 14px}
-.ps-status{display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:#7a6b74;padding:0 8px}
-.ps-appbar{font-family:var(--font-display);font-weight:700;font-size:15px;color:#d61f69;padding:0 4px}
-.ps-appbar span{font-size:10.5px;color:#7a6b74;font-weight:700;font-family:inherit}
-.ps-mgr{background:linear-gradient(120deg,#ff5fa2,#8b5cf6);color:#fff;font-size:11px;font-weight:700;border-radius:12px;padding:8px 11px;line-height:1.55}
-.ps-card{background:#fff;border:1px solid #f0d9e6;border-radius:14px;padding:10px 11px;box-shadow:0 2px 10px rgba(214,31,105,.06)}
+/* スマホモック：色はローカル変数（data-skinで着せ替え）。既定=さくら */
+.phone{--p:#ff5fa2;--pd:#d61f69;--ac:#8b5cf6;--pbg:#fff7fb;--pcard:#fff;--pline:#f0d9e6;--pmute:#7a6b74;--psoft:#fff0f6;--pgrad:linear-gradient(120deg,#ff5fa2,#8b5cf6);--pshell:#241733;--psh:rgba(214,31,105,.06);
+  position:relative;width:290px;max-width:100%;margin:0 auto;background:var(--pshell);border-radius:40px;padding:12px;box-shadow:var(--sh-pop);transition:background .4s var(--ease)}
+.phone:before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:20px;background:var(--pshell);border-radius:0 0 14px 14px;z-index:3;transition:background .4s var(--ease)}
+.phone[data-skin="blue"]{--p:#2563eb;--pd:#1e40af;--ac:#06b6d4;--pbg:#eef3fc;--pcard:#fff;--pline:#dbe6f7;--pmute:#5b6b85;--psoft:#e3edfe;--pgrad:linear-gradient(120deg,#2563eb,#06b6d4);--pshell:#0b1733;--psh:rgba(37,99,235,.10)}
+.phone[data-skin="grape"]{--p:#a855f7;--pd:#7e22ce;--ac:#ec4899;--pbg:#faf5ff;--pcard:#fff;--pline:#ecd9f7;--pmute:#7a6b85;--psoft:#f3e8ff;--pgrad:linear-gradient(120deg,#a855f7,#ec4899);--pshell:#1e1233;--psh:rgba(126,34,206,.10)}
+.phone[data-skin="mint"]{--p:#10b981;--pd:#047857;--ac:#22d3ee;--pbg:#f0fdf9;--pcard:#fff;--pline:#cdeede;--pmute:#5f7a70;--psoft:#d6f7ec;--pgrad:linear-gradient(120deg,#10b981,#22d3ee);--pshell:#0c2a22;--psh:rgba(4,120,87,.10)}
+.phone-screen{background:var(--pbg);border-radius:30px;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:18px 12px 14px;transition:background .4s var(--ease)}
+.ps-status{display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:var(--pmute);padding:0 8px}
+.ps-appbar{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--pd);padding:0 4px}
+.ps-appbar span{font-size:10.5px;color:var(--pmute);font-weight:700;font-family:inherit}
+.ps-mgr{background:var(--pgrad);color:#fff;font-size:11px;font-weight:700;border-radius:12px;padding:8px 11px;line-height:1.55}
+.ps-card{background:var(--pcard);border:1px solid var(--pline);border-radius:14px;padding:10px 11px;box-shadow:0 2px 10px var(--psh)}
 .ps-h{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:#2b1b26}
-.ps-h b{margin-left:auto;font-family:var(--font-display);color:#d61f69;font-size:15px}
+.ps-h b{margin-left:auto;font-family:var(--font-display);color:var(--pd);font-size:15px}
 .ps-cal{display:flex;gap:4px;margin-top:9px}
-.ps-cal .d{flex:1;text-align:center;font-size:9px;font-weight:800;color:#7a6b74}
-.ps-cal .d span{display:grid;place-items:center;margin-top:3px;height:22px;border-radius:7px;background:#fff0f6;font-size:9px;font-weight:800;color:#d61f69}
-.ps-cal .d.on span{background:linear-gradient(120deg,#ff5fa2,#8b5cf6);color:#fff}
-.ps-gauge{height:12px;border-radius:8px;background:#fff0f6;overflow:hidden;margin:9px 0 5px}
-.ps-gauge span{display:block;height:100%;background:linear-gradient(120deg,#ff5fa2,#8b5cf6)}
-.ps-sub{font-size:10px;font-weight:700;color:#7a6b74}
+.ps-cal .d{flex:1;text-align:center;font-size:9px;font-weight:800;color:var(--pmute)}
+.ps-cal .d span{display:grid;place-items:center;margin-top:3px;height:22px;border-radius:7px;background:var(--psoft);font-size:9px;font-weight:800;color:var(--pd)}
+.ps-cal .d.on span{background:var(--pgrad);color:#fff}
+.ps-gauge{height:12px;border-radius:8px;background:var(--psoft);overflow:hidden;margin:9px 0 5px}
+.ps-gauge span{display:block;height:100%;background:var(--pgrad)}
+.ps-sub{font-size:10px;font-weight:700;color:var(--pmute)}
 .ps-feats{display:flex;gap:6px;flex-wrap:wrap}
-.ps-feats span{font-size:10px;font-weight:800;background:#fff;border:1px solid #f0d9e6;border-radius:999px;padding:5px 9px;color:#2b1b26}
+.ps-feats span{font-size:10px;font-weight:800;background:var(--pcard);border:1px solid var(--pline);border-radius:999px;padding:5px 9px;color:#2b1b26}
+/* 着せ替えスウォッチ */
+.skins{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.skins .lbl{font-size:12px;font-weight:800;color:var(--ink-muted)}
+.skins button{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line),0 2px 6px rgba(0,0,0,.12);cursor:pointer;padding:0;transition:transform .18s var(--ease)}
+.skins button:hover{transform:scale(1.12)}
+.skins button[aria-pressed="true"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--oshi-pink-deep)}
+.skins .sk-note{flex-basis:100%;text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-muted);margin-top:2px}
 
 /* sections shells */
 .sec{padding:48px 0}
@@ -422,6 +434,14 @@ footer{background:#fff;border-top:1px solid var(--line)}
           </div>
           <div class="ps-feats"><span>🎫 当落シミュ</span><span>⏳ 遠征防衛</span><span>🤝 立替・名義</span></div>
         </div>
+      </div>
+      <div class="skins" id="skins" role="group" aria-label="アプリの色を着せ替え">
+        <span class="lbl">色を着せ替え</span>
+        <button data-skin="sakura" aria-pressed="true" title="さくら" style="background:linear-gradient(120deg,#ff5fa2,#8b5cf6)"></button>
+        <button data-skin="blue" aria-pressed="false" title="ミッドナイトブルー" style="background:linear-gradient(120deg,#2563eb,#06b6d4)"></button>
+        <button data-skin="grape" aria-pressed="false" title="グレープ" style="background:linear-gradient(120deg,#a855f7,#ec4899)"></button>
+        <button data-skin="mint" aria-pressed="false" title="ミント" style="background:linear-gradient(120deg,#10b981,#22d3ee)"></button>
+        <span class="sk-note">テーマも書体も自由に。推しの色（メンバーカラー）にも着せ替えできます</span>
       </div>
     </div>
   </section>
@@ -782,6 +802,24 @@ footer{background:#fff;border-top:1px solid var(--line)}
     onScroll();
   }
 
+  /* ---- スマホモックの着せ替え（テーマデモ） ---- */
+  function initSkins(){
+    var wrap = document.getElementById("skins");
+    var phone = document.querySelector(".phone");
+    if(!wrap || !phone) return;
+    wrap.addEventListener("click", function(ev){
+      var b = ev.target.closest("button[data-skin]");
+      if(!b) return;
+      var skin = b.getAttribute("data-skin");
+      // さくらは既定（data-skin属性なし）
+      if(skin === "sakura") phone.removeAttribute("data-skin");
+      else phone.setAttribute("data-skin", skin);
+      var btns = wrap.querySelectorAll("button[data-skin]");
+      for(var i=0;i<btns.length;i++){ btns[i].setAttribute("aria-pressed", btns[i]===b ? "true" : "false"); }
+      track("theme_demo", { label: skin });
+    });
+  }
+
   function init(){
     applyPricing();
     animateGauges();
@@ -789,6 +827,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
     initForm();
     initFaq();
     initSticky();
+    initSkins();
     // CTAクリック計測（事前登録ボタン）
     var ctas = document.querySelectorAll('a[href="#register"]');
     for(var i=0;i<ctas.length;i++){
