@@ -30,7 +30,7 @@
 <!-- 唯一の外部参照：Google Fonts（ブランド書体）。未取得時はシステムの丸ゴシック/明朝にフォールバックします。 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Kaisei+Decol:wght@700&family=Noto+Sans+JP:wght@500;700&family=Shippori+Mincho:wght@500;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --oshi-pink:#ff5fa2; --oshi-pink-deep:#d61f69; --purple:#8b5cf6; --purple-deep:#6d28d9;
@@ -133,14 +133,27 @@ section{scroll-margin-top:76px}
 .dash .tiles div{flex:1;background:rgba(255,255,255,.92);border-radius:var(--r-md);padding:12px;
   display:grid;place-items:center}
 /* hero phone mockup (v6.1) */
-/* スマホモック：色はローカル変数（data-skinで着せ替え）。既定=さくら */
-.phone{--p:#ff5fa2;--pd:#d61f69;--ac:#8b5cf6;--pbg:#fff7fb;--pcard:#fff;--pline:#f0d9e6;--pmute:#7a6b74;--psoft:#fff0f6;--pgrad:linear-gradient(120deg,#ff5fa2,#8b5cf6);--pshell:#241733;--psh:rgba(214,31,105,.06);
+/* スマホモック：色＝data-skin（既定さくら）／書体＝data-font（既定まる）でローカル変数を差し替え */
+.phone{--p:#ff5fa2;--pd:#d61f69;--ac:#8b5cf6;--pbg:#fff7fb;--pcard:#fff;--pline:#f0d9e6;--pmute:#7a6b74;--psoft:#fff0f6;--pgrad:linear-gradient(120deg,#ff5fa2,#8b5cf6);--pshell:#241733;--psh:rgba(214,31,105,.06);--demo-font:"Zen Maru Gothic",sans-serif;
   position:relative;width:290px;max-width:100%;margin:0 auto;background:var(--pshell);border-radius:40px;padding:12px;box-shadow:var(--sh-pop);transition:background .4s var(--ease)}
 .phone:before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:20px;background:var(--pshell);border-radius:0 0 14px 14px;z-index:3;transition:background .4s var(--ease)}
-.phone[data-skin="blue"]{--p:#2563eb;--pd:#1e40af;--ac:#06b6d4;--pbg:#eef3fc;--pcard:#fff;--pline:#dbe6f7;--pmute:#5b6b85;--psoft:#e3edfe;--pgrad:linear-gradient(120deg,#2563eb,#06b6d4);--pshell:#0b1733;--psh:rgba(37,99,235,.10)}
-.phone[data-skin="grape"]{--p:#a855f7;--pd:#7e22ce;--ac:#ec4899;--pbg:#faf5ff;--pcard:#fff;--pline:#ecd9f7;--pmute:#7a6b85;--psoft:#f3e8ff;--pgrad:linear-gradient(120deg,#a855f7,#ec4899);--pshell:#1e1233;--psh:rgba(126,34,206,.10)}
-.phone[data-skin="mint"]{--p:#10b981;--pd:#047857;--ac:#22d3ee;--pbg:#f0fdf9;--pcard:#fff;--pline:#cdeede;--pmute:#5f7a70;--psoft:#d6f7ec;--pgrad:linear-gradient(120deg,#10b981,#22d3ee);--pshell:#0c2a22;--psh:rgba(4,120,87,.10)}
-.phone-screen{background:var(--pbg);border-radius:30px;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:18px 12px 14px;transition:background .4s var(--ease)}
+/* == 推し色プリセット（§5/§6 定番カラー 全色） == */
+.phone[data-skin="midnight"]{--p:#2563eb;--pd:#1e40af;--ac:#06b6d4;--pbg:#eef3fc;--pline:#dbe6f7;--pmute:#5b6b85;--psoft:#e3edfe;--pgrad:linear-gradient(120deg,#2563eb,#06b6d4);--pshell:#0b1733;--psh:rgba(37,99,235,.10)}
+.phone[data-skin="red"]{--p:#ef4444;--pd:#b91c1c;--ac:#fb7185;--pbg:#fff5f5;--pline:#f6d5d5;--pmute:#8a6b6b;--psoft:#fee2e2;--pgrad:linear-gradient(120deg,#ef4444,#fb7185);--pshell:#2a0e0e;--psh:rgba(185,28,28,.10)}
+.phone[data-skin="pink"]{--p:#ec4899;--pd:#be185d;--ac:#f9a8d4;--pbg:#fff5fa;--pline:#f7d6e6;--pmute:#8a6b78;--psoft:#fce7f3;--pgrad:linear-gradient(120deg,#ec4899,#f9a8d4);--pshell:#2a1020;--psh:rgba(190,24,93,.10)}
+.phone[data-skin="purple"]{--p:#a855f7;--pd:#7e22ce;--ac:#ec4899;--pbg:#faf5ff;--pline:#e9d5f7;--pmute:#7a6b85;--psoft:#f3e8ff;--pgrad:linear-gradient(120deg,#a855f7,#ec4899);--pshell:#1e1233;--psh:rgba(126,34,206,.10)}
+.phone[data-skin="blue"]{--p:#3b82f6;--pd:#1d4ed8;--ac:#38bdf8;--pbg:#eff5ff;--pline:#d4e3fb;--pmute:#5f6f88;--psoft:#dbeafe;--pgrad:linear-gradient(120deg,#3b82f6,#38bdf8);--pshell:#0c1d3a;--psh:rgba(29,78,216,.10)}
+.phone[data-skin="sky"]{--p:#0ea5e9;--pd:#0369a1;--ac:#22d3ee;--pbg:#f0f9ff;--pline:#cfe9f7;--pmute:#5b7585;--psoft:#e0f2fe;--pgrad:linear-gradient(120deg,#0ea5e9,#22d3ee);--pshell:#07232e;--psh:rgba(3,105,161,.10)}
+.phone[data-skin="green"]{--p:#22c55e;--pd:#15803d;--ac:#84cc16;--pbg:#f1fdf4;--pline:#cdeede;--pmute:#5f7a68;--psoft:#dcfce7;--pgrad:linear-gradient(120deg,#22c55e,#84cc16);--pshell:#0c2a18;--psh:rgba(21,128,61,.10)}
+.phone[data-skin="yellow"]{--p:#eab308;--pd:#a16207;--ac:#f59e0b;--pbg:#fffdf2;--pline:#f0e6c2;--pmute:#7a7355;--psoft:#fef9c3;--pgrad:linear-gradient(120deg,#eab308,#f59e0b);--pshell:#2a2208;--psh:rgba(161,98,7,.12)}
+.phone[data-skin="orange"]{--p:#f97316;--pd:#c2410c;--ac:#fb923c;--pbg:#fff7ed;--pline:#f6dcc2;--pmute:#87705f;--psoft:#ffedd5;--pgrad:linear-gradient(120deg,#f97316,#fb923c);--pshell:#2a1408;--psh:rgba(194,65,12,.10)}
+.phone[data-skin="white"]{--p:#94a3b8;--pd:#475569;--ac:#cbd5e1;--pbg:#fafbfc;--pline:#e5e9ef;--pmute:#6b7280;--psoft:#f1f5f9;--pgrad:linear-gradient(120deg,#94a3b8,#cbd5e1);--pshell:#334155;--psh:rgba(71,85,105,.08)}
+.phone[data-skin="mono"]{--p:#374151;--pd:#111827;--ac:#6b7280;--pbg:#f8fafc;--pline:#e2e6eb;--pmute:#6b7280;--psoft:#f1f3f5;--pgrad:linear-gradient(120deg,#374151,#6b7280);--pshell:#111827;--psh:rgba(17,24,39,.12)}
+/* == 書体プリセット（本文系を切替・見出しはブランド表示書体を維持） == */
+.phone[data-font="sharp"]{--demo-font:"Noto Sans JP",sans-serif}
+.phone[data-font="elegant"]{--demo-font:"Shippori Mincho",serif}
+.phone[data-font="ud"]{--demo-font:"BIZ UDPGothic","Noto Sans JP",sans-serif}
+.phone-screen{background:var(--pbg);border-radius:30px;overflow:hidden;display:flex;flex-direction:column;gap:8px;padding:18px 12px 14px;font-family:var(--demo-font);transition:background .4s var(--ease)}
 .ps-status{display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:var(--pmute);padding:0 8px}
 .ps-appbar{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--pd);padding:0 4px}
 .ps-appbar span{font-size:10.5px;color:var(--pmute);font-weight:700;font-family:inherit}
@@ -157,13 +170,19 @@ section{scroll-margin-top:76px}
 .ps-sub{font-size:10px;font-weight:700;color:var(--pmute)}
 .ps-feats{display:flex;gap:6px;flex-wrap:wrap}
 .ps-feats span{font-size:10px;font-weight:800;background:var(--pcard);border:1px solid var(--pline);border-radius:999px;padding:5px 9px;color:#2b1b26}
-/* 着せ替えスウォッチ */
-.skins{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:16px;flex-wrap:wrap}
-.skins .lbl{font-size:12px;font-weight:800;color:var(--ink-muted)}
-.skins button{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line),0 2px 6px rgba(0,0,0,.12);cursor:pointer;padding:0;transition:transform .18s var(--ease)}
-.skins button:hover{transform:scale(1.12)}
-.skins button[aria-pressed="true"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--oshi-pink-deep)}
-.skins .sk-note{flex-basis:100%;text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-muted);margin-top:2px}
+/* 着せ替えスウォッチ（色） */
+.skins{display:flex;gap:9px;align-items:center;justify-content:center;margin-top:16px;flex-wrap:wrap;max-width:330px;margin-left:auto;margin-right:auto}
+.skins .lbl{flex-basis:100%;text-align:center;font-size:12px;font-weight:800;color:var(--ink-muted);margin-bottom:2px}
+.skins button{width:25px;height:25px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line),0 2px 6px rgba(0,0,0,.12);cursor:pointer;padding:0;transition:transform .18s var(--ease)}
+.skins button:hover{transform:scale(1.14)}
+.skins button[aria-pressed="true"]{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--oshi-pink-deep);transform:scale(1.1)}
+/* 書体トグル */
+.fonts{display:flex;gap:7px;align-items:center;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.fonts .lbl{flex-basis:100%;text-align:center;font-size:12px;font-weight:800;color:var(--ink-muted);margin-bottom:2px}
+.fonts button{border:1px solid var(--line);background:#fff;border-radius:999px;font-weight:800;font-size:12px;padding:6px 13px;color:var(--ink-muted);cursor:pointer;transition:all .18s var(--ease);min-height:34px}
+.fonts button:hover{border-color:var(--oshi-pink)}
+.fonts button[aria-pressed="true"]{background:var(--grad-primary);color:#fff;border-color:transparent}
+.sk-note{text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-muted);margin-top:12px}
 
 /* sections shells */
 .sec{padding:48px 0}
@@ -436,13 +455,28 @@ footer{background:#fff;border-top:1px solid var(--line)}
         </div>
       </div>
       <div class="skins" id="skins" role="group" aria-label="アプリの色を着せ替え">
-        <span class="lbl">色を着せ替え</span>
+        <span class="lbl">色を着せ替え（推しのメンバーカラーに）</span>
         <button data-skin="sakura" aria-pressed="true" title="さくら" style="background:linear-gradient(120deg,#ff5fa2,#8b5cf6)"></button>
-        <button data-skin="blue" aria-pressed="false" title="ミッドナイトブルー" style="background:linear-gradient(120deg,#2563eb,#06b6d4)"></button>
-        <button data-skin="grape" aria-pressed="false" title="グレープ" style="background:linear-gradient(120deg,#a855f7,#ec4899)"></button>
-        <button data-skin="mint" aria-pressed="false" title="ミント" style="background:linear-gradient(120deg,#10b981,#22d3ee)"></button>
-        <span class="sk-note">テーマも書体も自由に。推しの色（メンバーカラー）にも着せ替えできます</span>
+        <button data-skin="midnight" aria-pressed="false" title="ミッドナイトブルー" style="background:linear-gradient(120deg,#2563eb,#06b6d4)"></button>
+        <button data-skin="red" aria-pressed="false" title="レッド" style="background:linear-gradient(120deg,#ef4444,#fb7185)"></button>
+        <button data-skin="pink" aria-pressed="false" title="ピンク" style="background:linear-gradient(120deg,#ec4899,#f9a8d4)"></button>
+        <button data-skin="purple" aria-pressed="false" title="パープル" style="background:linear-gradient(120deg,#a855f7,#ec4899)"></button>
+        <button data-skin="blue" aria-pressed="false" title="ブルー" style="background:linear-gradient(120deg,#3b82f6,#38bdf8)"></button>
+        <button data-skin="sky" aria-pressed="false" title="スカイ（水色）" style="background:linear-gradient(120deg,#0ea5e9,#22d3ee)"></button>
+        <button data-skin="green" aria-pressed="false" title="グリーン" style="background:linear-gradient(120deg,#22c55e,#84cc16)"></button>
+        <button data-skin="yellow" aria-pressed="false" title="イエロー" style="background:linear-gradient(120deg,#eab308,#f59e0b)"></button>
+        <button data-skin="orange" aria-pressed="false" title="オレンジ" style="background:linear-gradient(120deg,#f97316,#fb923c)"></button>
+        <button data-skin="white" aria-pressed="false" title="ホワイト" style="background:linear-gradient(120deg,#cbd5e1,#eef2f7)"></button>
+        <button data-skin="mono" aria-pressed="false" title="モノトーン" style="background:linear-gradient(120deg,#374151,#6b7280)"></button>
       </div>
+      <div class="fonts" id="fonts" role="group" aria-label="アプリの書体を切替">
+        <span class="lbl">書体を切替</span>
+        <button data-font="maru" aria-pressed="true" style="font-family:'Zen Maru Gothic',sans-serif">まる</button>
+        <button data-font="sharp" aria-pressed="false" style="font-family:'Noto Sans JP',sans-serif">シャープ</button>
+        <button data-font="elegant" aria-pressed="false" style="font-family:'Shippori Mincho',serif">エレガント</button>
+        <button data-font="ud" aria-pressed="false" style="font-family:'BIZ UDPGothic',sans-serif">よみやすさUD</button>
+      </div>
+      <p class="sk-note">テーマも書体も自由に。推しの色（メンバーカラー）にも着せ替えできます<br><span style="opacity:.8">※ オリジナルの配色・書体づくりは今後の有料プランで予定</span></p>
     </div>
   </section>
 
@@ -802,22 +836,38 @@ footer{background:#fff;border-top:1px solid var(--line)}
     onScroll();
   }
 
-  /* ---- スマホモックの着せ替え（テーマデモ） ---- */
+  /* ---- スマホモックの着せ替え（色＝data-skin / 書体＝data-font） ---- */
   function initSkins(){
-    var wrap = document.getElementById("skins");
     var phone = document.querySelector(".phone");
-    if(!wrap || !phone) return;
-    wrap.addEventListener("click", function(ev){
-      var b = ev.target.closest("button[data-skin]");
-      if(!b) return;
-      var skin = b.getAttribute("data-skin");
-      // さくらは既定（data-skin属性なし）
-      if(skin === "sakura") phone.removeAttribute("data-skin");
-      else phone.setAttribute("data-skin", skin);
-      var btns = wrap.querySelectorAll("button[data-skin]");
-      for(var i=0;i<btns.length;i++){ btns[i].setAttribute("aria-pressed", btns[i]===b ? "true" : "false"); }
-      track("theme_demo", { label: skin });
-    });
+    if(!phone) return;
+    var colors = document.getElementById("skins");
+    if(colors){
+      colors.addEventListener("click", function(ev){
+        var b = ev.target.closest("button[data-skin]");
+        if(!b) return;
+        var skin = b.getAttribute("data-skin");
+        // さくらは既定（data-skin属性なし）
+        if(skin === "sakura") phone.removeAttribute("data-skin");
+        else phone.setAttribute("data-skin", skin);
+        var btns = colors.querySelectorAll("button[data-skin]");
+        for(var i=0;i<btns.length;i++){ btns[i].setAttribute("aria-pressed", btns[i]===b ? "true" : "false"); }
+        track("theme_demo", { label: "color:" + skin });
+      });
+    }
+    var fonts = document.getElementById("fonts");
+    if(fonts){
+      fonts.addEventListener("click", function(ev){
+        var b = ev.target.closest("button[data-font]");
+        if(!b) return;
+        var font = b.getAttribute("data-font");
+        // まるは既定（data-font属性なし）
+        if(font === "maru") phone.removeAttribute("data-font");
+        else phone.setAttribute("data-font", font);
+        var btns = fonts.querySelectorAll("button[data-font]");
+        for(var i=0;i<btns.length;i++){ btns[i].setAttribute("aria-pressed", btns[i]===b ? "true" : "false"); }
+        track("theme_demo", { label: "font:" + font });
+      });
+    }
   }
 
   function init(){
