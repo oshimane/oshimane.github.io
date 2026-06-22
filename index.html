@@ -157,6 +157,11 @@ section{scroll-margin-top:76px}
 .ps-status{display:flex;justify-content:space-between;font-size:10px;font-weight:800;color:var(--pmute);padding:0 8px}
 .ps-appbar{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--pd);padding:0 4px}
 .ps-appbar span{font-size:10.5px;color:var(--pmute);font-weight:700;font-family:inherit}
+.ps-count{background:linear-gradient(135deg,#2c1a33,#160d1b);border-radius:14px;padding:11px 13px;color:#fff;box-shadow:0 4px 14px rgba(31,20,48,.3)}
+.ps-count .l{font-size:10px;font-weight:700;opacity:.72}
+.ps-count .n{font-family:var(--font-display);font-weight:700;font-size:25px;line-height:1.1;margin:1px 0 4px}
+.ps-count .n b{font-size:33px}
+.ps-count .e{font-size:10.5px;font-weight:700;opacity:.92}
 .ps-mgr{background:var(--pgrad);color:#fff;font-size:11px;font-weight:700;border-radius:12px;padding:8px 11px;line-height:1.55}
 .ps-card{background:var(--pcard);border:1px solid var(--pline);border-radius:14px;padding:10px 11px;box-shadow:0 2px 10px var(--psh)}
 .ps-h{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:800;color:#2b1b26}
@@ -448,17 +453,11 @@ footer{background:#fff;border-top:1px solid var(--line)}
       <div class="phone" role="img" aria-label="推し活マネージャーのアプリ画面イメージ">
         <div class="phone-screen">
           <div class="ps-status"><span>9:41</span><span>●●●&nbsp;⚡</span></div>
-          <div class="ps-appbar">推しマネ <span>あなたの専属マネージャー</span></div>
-          <div class="ps-mgr">マネージャーより：ホテルの無料キャンセル期限、明日まで。当落と一緒に確認しておきましょう◎</div>
-          <div class="ps-card">
-            <div class="ps-h">🗓 参戦カレンダー</div>
-            <div class="ps-cal">
-              <div class="d">月<span>11</span></div>
-              <div class="d on">火<span>LIVE</span></div>
-              <div class="d">水<span>13</span></div>
-              <div class="d on">木<span>当落</span></div>
-              <div class="d">金<span>15</span></div>
-            </div>
+          <div class="ps-appbar">推しマネ <span>ホーム</span></div>
+          <div class="ps-count">
+            <div class="l">次に会えるまで</div>
+            <div class="n">あと<b>133</b>日</div>
+            <div class="e">🎤 11月1日(日)・ソウル遠征</div>
           </div>
           <div class="ps-card">
             <div class="ps-h">💰 今月、推しに使えるお金<b>¥38,400</b></div>

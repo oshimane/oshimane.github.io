@@ -128,6 +128,22 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;padding:8px;
   display:grid;place-items:center;font-weight:900;font-size:16px;flex:0 0 auto}
 .note-dev{text-align:center;font-size:10px;font-weight:700;color:var(--ink-muted);margin:14px 0 4px}
 
+/* ---- view segmented tabs (月/締切/タイムライン/支払い) ---- */
+.segtabs{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-pill);padding:3px;margin:0 4px 10px;box-shadow:var(--sh-card)}
+.segtab{border:none;background:transparent;border-radius:var(--r-pill);padding:9px 4px;font-family:var(--font-body);
+  font-weight:800;font-size:12px;color:var(--ink-muted);cursor:pointer;white-space:nowrap}
+.segtab.active{background:var(--oshi-pink);color:#fff}
+/* ---- display height toggle row ---- */
+.disp{display:flex;align-items:center;justify-content:space-between;margin:0 6px 10px}
+.disp .lab{font-weight:700;font-size:11px;color:var(--ink-muted)}
+.disp .toggles{display:flex;gap:4px;background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:3px}
+.disp .tg{width:32px;height:26px;border:none;background:transparent;border-radius:99px;display:grid;
+  place-items:center;color:var(--ink-muted);cursor:pointer;font-size:14px}
+.disp .tg.active{background:var(--pink-soft);color:var(--oshi-pink-deep)}
+/* ---- tap hint ---- */
+.cal-hint{text-align:center;font-size:11px;font-weight:700;color:var(--ink-muted);margin:14px 10px 2px;line-height:1.5}
+
 /* ---- tab bar ---- */
 .tabs{display:flex;border-top:1px solid var(--line);background:rgba(255,255,255,.96);
   backdrop-filter:blur(8px);padding:8px 6px calc(8px + env(safe-area-inset-bottom))}
@@ -217,16 +233,28 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;padding:8px;
         </div>
         <span class="dev-tag">開発中のイメージ</span>
       </div>
-      <div class="bubble">
-        <svg width="30" height="30" style="flex:0 0 auto"><use href="#kuroko"></use></svg>
-        <div class="say">次の参戦、準備できてる？<small>マネージャーがそっと先回り</small></div>
-      </div>
     </div>
 
     <!-- content -->
     <div class="content">
+      <!-- 表示切替：月／締切／タイムライン／支払い（実アプリと一致・月がアクティブ） -->
+      <div class="segtabs">
+        <button class="segtab active">月</button>
+        <button class="segtab">締切</button>
+        <button class="segtab">タイムライン</button>
+        <button class="segtab">支払い</button>
+      </div>
+      <!-- 月ビューの高さ切替（折りたたみ／開く／拡張） -->
+      <div class="disp">
+        <span class="lab">カレンダーの表示</span>
+        <div class="toggles">
+          <button class="tg" aria-label="折りたたみ（一覧）">☰</button>
+          <button class="tg active" aria-label="開く（1ヶ月）">▦</button>
+          <button class="tg" aria-label="拡張（縦スクロール）">⇕</button>
+        </div>
+      </div>
       <div class="mnav">
-        <div class="m">2026年 <span>7月</span></div>
+        <div class="m">2026年 <span>6月</span></div>
         <div class="nav">
           <button class="iconbtn" aria-label="前の月">‹</button>
           <button class="today-btn">今日</button>
@@ -235,44 +263,11 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;padding:8px;
       </div>
 
       <div class="cal">
-        <div class="dow"><span class="sun">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="sat">土</span></div>
+        <div class="dow"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="sat">土</span><span class="sun">日</span></div>
         <div class="grid" id="grid"></div>
       </div>
 
-      <div class="section-t">確度で見分ける</div>
-      <div class="legend">
-        <div class="lg"><span class="chipdemo ev-fixed"></span>確定（実線・ベタ）</div>
-        <div class="lg"><span class="chipdemo ev-lottery"></span>当落待ち（点線＋?）</div>
-        <div class="lg"><span class="chipdemo ev-planned"></span>予定（先着待ち）</div>
-        <div class="lg"><span class="chipdemo ev-wish"></span>行ってみたい</div>
-        <div class="lg"><span class="chipdemo ev-done"></span>参加済み</div>
-        <div class="lg"><span class="qbadge" style="margin:0">?</span>当落カウントダウン</div>
-      </div>
-
-      <div class="section-t">締切ピン</div>
-      <div class="pins">
-        <span class="pinlg"><svg width="16" height="16"><use href="#pin-pay"></use></svg>入金</span>
-        <span class="pinlg"><svg width="16" height="16"><use href="#pin-lottery"></use></svg>当落</span>
-        <span class="pinlg"><svg width="16" height="16"><use href="#pin-hotel"></use></svg>ホテル無料CXL</span>
-        <span class="pinlg"><svg width="16" height="16"><use href="#pin-early"></use></svg>早割</span>
-      </div>
-
-      <div class="section-t">気になる（行ってみたい）</div>
-      <div class="inbox">
-        <div class="ttl"><svg width="14" height="14"><use href="#pin-early"></use></svg>日付未定の置き場 ・ 2件</div>
-        <div class="chips">
-          <div class="wishchip">
-            <svg class="ico"><use href="#ic-fes"></use></svg>
-            <div class="tx"><b>夏フェス2026</b><small>日程調整中 ・ 出演者発表まち</small></div>
-            <div class="plus">＋</div>
-          </div>
-          <div class="wishchip">
-            <svg class="ico"><use href="#ic-acoustic"></use></svg>
-            <div class="tx"><b>アコースティック公演</b><small>先行受付 未定</small></div>
-            <div class="plus">＋</div>
-          </div>
-        </div>
-      </div>
+      <div class="cal-hint">日付をタップすると、その日の予定がポップアップで開きます</div>
 
       <div class="note-dev">※ これは開発中のイメージです。実際の画面とは異なります。</div>
     </div>
@@ -291,18 +286,17 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;padding:8px;
 <script>
 (function(){
   "use strict";
-  // July 2026: 1日 = 水曜(3)。今日 = 6日。
-  var FIRST_DOW = 3, DAYS = 31, TODAY = 6;
-  // 確度つきイベント
+  // June 2026: 1日 = 月曜（月曜始まりグリッドの先頭＝空白0）。今日 = 22日。
+  var FIRST_DOW = 0, DAYS = 30, TODAY = 22;
+  // 確度つきイベント（実アプリの月ビューと同じく、セル内に確度別ラベルで表示）
   var events = {
-    1:  { label:"FCイベント", kind:"done" },                       // 参加済み
-    5:  { label:"全力夏",   kind:"fixed" },                         // 確定
-    12: { label:"ドーム",   kind:"lottery", q:true, cd:"あと3日" }, // 当落待ち＋カウントダウン
-    18: { label:"配信",     kind:"planned" },                       // 予定（先着待ち）
-    23: { label:"対バン",   kind:"wish" }                           // 行ってみたい
+    6:  { label:"全力ライブ", kind:"fixed" },                        // 確定
+    14: { label:"当落発表",   kind:"lottery", q:true, cd:"あと3日" },// 当落待ち＋カウントダウン
+    20: { label:"配信",       kind:"planned" },                      // 予定（先着待ち）
+    27: { label:"対バン",     kind:"wish" }                          // 行ってみたい
   };
-  // 締切ピン
-  var pins = { 8:"pay", 9:"lottery", 15:"hotel", 20:"early" };
+  // 締切（セル右上のピン）
+  var pins = { 10:"pay", 14:"lottery", 24:"hotel" };
 
   var grid = document.getElementById("grid");
   // 先頭の空白（前月分）
