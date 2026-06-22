@@ -392,6 +392,20 @@ footer{background:#fff;border-top:1px solid var(--line)}
     <path d="M48 70c-3-13-22-16-22-31a11 11 0 0122-1.5 11 11 0 0122 1.5c0 15-19 18-22 31z" fill="#ff5fa2" stroke="#d61f69" stroke-width="3.5" stroke-linejoin="round"></path>
     <path d="M40 40l2.5 5 5 .7-3.6 3.6.9 5-4.8-2.6" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
   </symbol>
+  <!-- ファン（推し活をする人・ユニセックス人物＋ペンライト＋星） -->
+  <symbol id="ic-fan" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#e9fbf3"></rect>
+    <!-- 掲げたペンライト -->
+    <g transform="rotate(20 62 38)">
+      <rect x="57" y="22" width="10" height="28" rx="5" fill="#ede4ff" stroke="#8b5cf6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></rect>
+    </g>
+    <!-- きらめき（ステージの光） -->
+    <path d="M72 24l2 4.2 4.2 2-4.2 2L72 36l-2-4.2-4.2-2 4.2-2z" fill="#f59e0b"></path>
+    <!-- ファン：頭（中立色） -->
+    <circle cx="40" cy="52" r="11" fill="#ffffff" stroke="#2b1b26" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></circle>
+    <!-- ファン：肩 -->
+    <path d="M22 82a18 18 0 0 1 36 0" fill="none" stroke="#2b1b26" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
 </svg>
 
 <!-- ============ TOPBAR ============ -->
@@ -485,7 +499,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
     <div class="wrap trust">
       <div class="item"><svg class="ic-sm"><use href="#ic-key"></use></svg><div><b>スマホ内に保存</b><p>推し活の記録はあなたのスマホの中だけ。サーバーへは送信しません。</p></div></div>
       <div class="item"><svg class="ic-sm"><use href="#ic-penlight"></use></svg><div><b>iOS / Android 両対応</b><p>どちらのスマホでも使えるよう準備中。対応状況は登録後にお知らせ。</p></div></div>
-      <div class="item"><svg class="ic-sm"><use href="#ic-heart"></use></svg><div><b>決めるのは、あなた</b><p>面倒な計算と段取りはマネージャーが裏方で先回り。指図や説教はしません。あなたの推し活に、口は出しません。</p></div></div>
+      <div class="item"><svg class="ic-sm"><use href="#ic-fan"></use></svg><div><b>決めるのは、あなた</b><p>面倒な計算と段取りはマネージャーが裏方で先回り。指図や説教はしません。あなたの推し活に、口は出しません。</p></div></div>
     </div>
   </section>
 
@@ -522,7 +536,13 @@ footer{background:#fff;border-top:1px solid var(--line)}
       </style>
       <div style="display:flex;gap:34px;justify-content:center;flex-wrap:wrap;align-items:flex-start">
         <figure class="mock">
-          <figcaption style="margin:0 0 12px;font-weight:900;font-size:15px;color:#2b1b26">📅 参戦カレンダー<br><span style="font-weight:700;font-size:12px;color:#7a6b74">予定の“確度”で先回り。当落待ちも、行ってみたいも。</span></figcaption>
+          <figcaption style="margin:0 0 12px;font-weight:900;font-size:15px;color:#2b1b26">🏠 ホーム画面（ダッシュボード）<br><span style="font-weight:700;font-size:12px;color:#7a6b74">カウントダウン・残高・ナビをまとめてひと目で。</span></figcaption>
+          <div class="mock-vp" style="width:100%;overflow:hidden;border-radius:26px;margin:0 auto">
+            <iframe class="mock-if" src="screens/app-home.html" title="ホーム画面（ダッシュボード）" loading="lazy" style="width:392px;height:900px;border:0;display:block;transform-origin:top left"></iframe>
+          </div>
+        </figure>
+        <figure class="mock">
+          <figcaption style="margin:0 0 12px;font-weight:900;font-size:15px;color:#2b1b26">📅 参戦カレンダー<br><span style="font-weight:700;font-size:12px;color:#7a6b74">予定の"確度"で先回り。当落待ちも、行ってみたいも。</span></figcaption>
           <div class="mock-vp" style="width:100%;overflow:hidden;border-radius:26px;margin:0 auto">
             <iframe class="mock-if" src="screens/app-calendar.html" title="カレンダー画面（ホーム）" loading="lazy" style="width:392px;height:900px;border:0;display:block;transform-origin:top left"></iframe>
           </div>
