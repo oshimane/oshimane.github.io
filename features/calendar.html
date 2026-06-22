@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>参戦カレンダー｜推し活マネージャー</title>
+<meta name="description" content="ライブ・配信・発売日・当落発表・各種締切をひとつのカレンダーに。月／締切／タイムライン／支払いの4つの見方で、推しのスケジュールを先回り。推し活マネージャーの参戦カレンダー機能。">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon-180.png">
+<meta name="theme-color" content="#ff5fa2">
+<meta name="robots" content="noindex"><!-- 公開準備中。本ローンチ時に削除 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="参戦カレンダー｜推し活マネージャー">
+<meta property="og:description" content="ライブ・配信・当落発表・各種締切をひとつに。月／締切／タイムライン／支払いの4つの見方で先回り。">
+<meta property="og:url" content="https://oshimane.github.io/features/calendar.html">
+<meta property="og:image" content="https://oshimane.github.io/assets/og-image_1200x630_20260609_231440.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --oshi-pink:#ff5fa2; --oshi-pink-deep:#d61f69; --purple:#8b5cf6; --purple-deep:#6d28d9;
+  --gold:#f59e0b; --gold-ink:#b45309; --mint:#34d399; --mint-ink:#0f9d6b;
+  --cream:#fff7fb; --white:#ffffff; --ink:#2b1b26; --ink-muted:#7a6b74; --line:#f3e3ec;
+  --pink-soft:#ffe6f1; --purple-soft:#ede4ff; --gold-soft:#fdeccc; --mint-soft:#d6f7ec;
+  --grad-primary:linear-gradient(120deg,#ff5fa2 0%,#b06bf0 55%,#8b5cf6 100%);
+  --font-body:"Zen Maru Gothic",system-ui,-apple-system,sans-serif;
+  --font-display:"Kaisei Decol","Zen Maru Gothic",serif;
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-pill:99px;
+  --sh-card:0 8px 22px rgba(214,31,105,.07);
+  --sh-cta:0 12px 26px rgba(214,31,105,.26);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);font-weight:500;
+  -webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+
+/* ---- top bar ---- */
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,247,251,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;align-items:center;justify-content:space-between;height:58px}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:14px;color:var(--oshi-pink-deep);
+  text-decoration:none;min-height:44px;padding:0 6px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink)}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;
+  font-family:var(--font-body);font-weight:900;border:none;border-radius:var(--r-pill);min-height:52px;
+  padding:0 26px;font-size:15.5px;transition:transform .16s var(--ease)}
+.btn-primary{background:var(--grad-primary);color:#fff;box-shadow:var(--sh-cta)}
+.btn-ghost{background:#fff;color:var(--oshi-pink-deep);border:1.5px solid var(--oshi-pink)}
+.btn-sm{min-height:44px;padding:0 18px;font-size:14px}
+@media(hover:hover){.btn:hover{transform:translateY(-2px)}}
+.btn:active{transform:translateY(0)}
+
+/* ---- hero ---- */
+.hero{padding:42px 0 8px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--pink-soft);color:var(--oshi-pink-deep);
+  font-weight:900;font-size:12.5px;padding:8px 15px;border-radius:var(--r-pill);letter-spacing:.02em}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1.42;margin:16px 0 0;
+  letter-spacing:.01em}
+.hero h1 .pk{color:var(--oshi-pink-deep)}
+.hero .lead{font-size:15px;line-height:1.9;color:var(--ink-muted);margin:14px auto 0;max-width:620px;font-weight:700}
+@media(min-width:760px){.hero h1{font-size:38px}}
+
+/* ---- hero phone + side ---- */
+.showcase{display:flex;gap:34px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:26px}
+.mock-vp{width:300px;max-width:84vw;overflow:hidden;border-radius:26px;margin:0 auto}
+@media(min-width:760px){.mock-vp{width:360px;max-width:none}}
+.mock-if{width:392px;height:900px;border:0;display:block;transform-origin:top left}
+.note-dev{text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-muted);margin:12px 0 0}
+
+/* ---- sections ---- */
+.sec{padding:44px 0}
+.sec.white{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec h2{font-family:var(--font-display);font-weight:700;font-size:24px;text-align:center;margin:0 0 6px}
+.sec .sub{text-align:center;color:var(--ink-muted);font-weight:700;font-size:13.5px;margin:0 auto 26px;max-width:560px}
+
+/* ---- 4 views grid ---- */
+.views{display:grid;grid-template-columns:1fr;gap:14px;max-width:680px;margin:0 auto}
+@media(min-width:680px){.views{grid-template-columns:1fr 1fr}}
+.view{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-card);
+  padding:18px 18px 16px;display:flex;gap:14px;align-items:flex-start}
+.sec.white .view{background:var(--cream)}
+.view .vi{flex:0 0 auto;width:46px;height:46px}
+.view .vt{font-family:var(--font-display);font-weight:700;font-size:17px;color:var(--ink);margin:1px 0 5px}
+.view p{font-size:13.5px;line-height:1.78;color:var(--ink-muted);margin:0;font-weight:500}
+.view .pin-hint{display:inline-block;margin-top:7px;font-size:11.5px;font-weight:800;color:var(--purple-deep);
+  background:var(--purple-soft);border-radius:var(--r-pill);padding:3px 10px}
+
+/* ---- feature rows (お知らせ / 複数推し / タップ) ---- */
+.frow{display:flex;gap:16px;align-items:flex-start;max-width:680px;margin:0 auto 16px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-card);padding:18px}
+.frow .fi{flex:0 0 auto;width:42px;height:42px}
+.frow b{display:block;font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px}
+.frow p{margin:0;font-size:13.5px;line-height:1.8;color:var(--ink-muted);font-weight:500}
+
+/* ---- 3 steps ---- */
+.steps{display:grid;grid-template-columns:1fr;gap:14px;max-width:640px;margin:0 auto}
+@media(min-width:680px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);padding:20px 16px;text-align:center}
+.sec.white .step{background:#fff}
+.step .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:99px;
+  background:var(--grad-primary);color:#fff;font-family:var(--font-display);font-weight:700;font-size:18px;margin-bottom:10px}
+.step b{display:block;font-weight:900;font-size:14.5px;color:var(--ink);margin-bottom:4px}
+.step p{margin:0;font-size:12.5px;line-height:1.7;color:var(--ink-muted);font-weight:500}
+
+/* ---- honesty callout ---- */
+.honest{max-width:680px;margin:22px auto 0;background:var(--mint-soft);border:1px solid #bfeede;
+  border-radius:var(--r-md);padding:14px 18px;font-size:12.5px;font-weight:700;color:var(--mint-ink);line-height:1.8}
+
+/* ---- final CTA ---- */
+.cta{text-align:center;padding:48px 0}
+.cta h2{font-family:var(--font-display);font-weight:700;font-size:25px;margin:0 0 8px}
+.cta p{color:var(--ink-muted);font-weight:700;font-size:14px;margin:0 0 22px}
+.cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* ---- footer ---- */
+footer{background:#1f1430;color:#e9def0;padding:30px 0 36px;text-align:center}
+footer .links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer a{color:#f4b8d6;text-decoration:none;font-weight:700;font-size:13px;min-height:44px;display:inline-flex;align-items:center}
+footer .fine{font-size:11.5px;color:#b6a6c4;line-height:1.8;font-weight:500;max-width:620px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<!-- ===== inline SVG sprite ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5fa2"></stop><stop offset=".55" stop-color="#b06bf0"></stop><stop offset="1" stop-color="#8b5cf6"></stop>
+    </linearGradient>
+  </defs>
+  <!-- view: 月 -->
+  <symbol id="v-month" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#ffe6f1"></rect>
+    <rect x="24" y="26" width="48" height="44" rx="7" fill="none" stroke="#d61f69" stroke-width="3.4"></rect>
+    <path d="M24 38h48M36 22v8M60 22v8" stroke="#d61f69" stroke-width="3.4" stroke-linecap="round"></path>
+    <circle cx="36" cy="50" r="3.4" fill="#ff5fa2"></circle><circle cx="48" cy="50" r="3.4" fill="#8b5cf6"></circle>
+    <circle cx="60" cy="50" r="3.4" fill="#f59e0b"></circle><circle cx="36" cy="61" r="3.4" fill="#34d399"></circle>
+  </symbol>
+  <!-- view: 締切 -->
+  <symbol id="v-deadline" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#fdeccc"></rect>
+    <circle cx="48" cy="50" r="22" fill="none" stroke="#b45309" stroke-width="3.6"></circle>
+    <path d="M48 50V36M48 50l11 7" stroke="#b45309" stroke-width="3.6" stroke-linecap="round"></path>
+    <path d="M40 24h16" stroke="#b45309" stroke-width="3.6" stroke-linecap="round"></path>
+    <circle cx="70" cy="30" r="6" fill="#d61f69"></circle>
+  </symbol>
+  <!-- view: タイムライン -->
+  <symbol id="v-timeline" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#ede4ff"></rect>
+    <rect x="24" y="30" width="40" height="9" rx="4.5" fill="#8b5cf6"></rect>
+    <rect x="36" y="44" width="36" height="9" rx="4.5" fill="#ff5fa2"></rect>
+    <rect x="28" y="58" width="30" height="9" rx="4.5" fill="#34d399"></rect>
+  </symbol>
+  <!-- view: 支払い -->
+  <symbol id="v-pay" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#d6f7ec"></rect>
+    <rect x="24" y="32" width="48" height="32" rx="6" fill="none" stroke="#0f9d6b" stroke-width="3.4"></rect>
+    <path d="M24 42h48" stroke="#0f9d6b" stroke-width="3.4"></path>
+    <path d="M32 54h10" stroke="#0f9d6b" stroke-width="3.4" stroke-linecap="round"></path>
+  </symbol>
+  <!-- お知らせ（黒子） -->
+  <symbol id="f-bell" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#ffe6f1"></rect>
+    <path d="M48 24c-8 0-13 6-13 14 0 9-3 12-5 15h36c-2-3-5-6-5-15 0-8-5-14-13-14z" fill="none" stroke="#d61f69" stroke-width="3.4" stroke-linejoin="round"></path>
+    <path d="M43 70a5 5 0 0010 0" stroke="#d61f69" stroke-width="3.4" stroke-linecap="round" fill="none"></path>
+  </symbol>
+  <!-- 複数推し -->
+  <symbol id="f-multi" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#ede4ff"></rect>
+    <circle cx="38" cy="42" r="9" fill="#ff5fa2"></circle>
+    <circle cx="58" cy="42" r="9" fill="#8b5cf6"></circle>
+    <path d="M24 70c0-9 6-14 14-14s14 5 14 14M44 70c0-9 6-14 14-14s14 5 14 14" fill="none" stroke="#6d28d9" stroke-width="3.2" stroke-linecap="round"></path>
+  </symbol>
+  <!-- タップ -->
+  <symbol id="f-tap" viewBox="0 0 96 96">
+    <rect width="96" height="96" rx="24" fill="#fdeccc"></rect>
+    <path d="M44 30v22M44 52l-7-7M44 52v18a6 6 0 006 6h8a6 6 0 006-6V50a5 5 0 00-10 0" fill="none" stroke="#b45309" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"></path>
+  </symbol>
+  <symbol id="kuroko" viewBox="0 0 40 40">
+    <circle cx="20" cy="20" r="20" fill="#2b1b26"></circle>
+    <path d="M20 8c-6 0-9 4-9 10 0 5 0 9 0 12h18c0-3 0-7 0-12 0-6-3-10-9-10z" fill="#1c1020"></path>
+    <ellipse cx="15.5" cy="20" rx="2.1" ry="2.6" fill="#fff"></ellipse>
+    <ellipse cx="24.5" cy="20" rx="2.1" ry="2.6" fill="#fff"></ellipse>
+    <path d="M16 26q4 3 8 0" stroke="#ff5fa2" stroke-width="1.6" fill="none" stroke-linecap="round"></path>
+  </symbol>
+</svg>
+
+<!-- ===== top bar ===== -->
+<div class="topbar"><div class="wrap in">
+  <a class="back" href="../index.html#screens">‹ トップへ戻る</a>
+  <span class="brand"><svg width="20" height="20"><use href="#kuroko"></use></svg>推し活マネージャー</span>
+</div></div>
+
+<!-- ===== hero ===== -->
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">📅 参戦カレンダー</span>
+  <h1>推しのスケジュール、<br><span class="pk">もう見落とさない。</span></h1>
+  <p class="lead">ライブ・配信・発売日・当落発表・各種締切を、ひとつのカレンダーに。「いつ・いくら・何の締切か」を、推し色で先回りして見せます。</p>
+  <div class="showcase">
+    <div>
+      <div class="mock-vp"><iframe class="mock-if" src="../screens/app-calendar.html" title="カレンダー画面（月ビュー）" loading="lazy"></iframe></div>
+      <p class="note-dev">※ 画面は開発中のイメージです</p>
+    </div>
+  </div>
+</div></header>
+
+<!-- ===== 4 views ===== -->
+<section class="sec white"><div class="wrap">
+  <h2>4つの見方を、タップで切り替え</h2>
+  <p class="sub">同じ予定を、知りたい角度から。月で俯瞰、締切で先回り、タイムラインで重なりを、支払いでお金の流れを。</p>
+  <div class="views">
+    <div class="view">
+      <svg class="vi"><use href="#v-month"></use></svg>
+      <div><div class="vt">月</div>
+        <p>いつ何があるかを、ひと月で俯瞰。予定は<b>確度</b>で色分け（確定／当落待ち／予定／行ってみたい）。当落待ちのドキドキも、まだ迷っている予定も、そのまま置いておけます。</p>
+      </div>
+    </div>
+    <div class="view">
+      <svg class="vi"><use href="#v-deadline"></use></svg>
+      <div><div class="vt">締切</div>
+        <p>申込・入金・無料キャンセル期限を、期日が近い順に。近いものほど赤く。「うっかり申込を逃した」「無料キャンセルの日が過ぎていた」を、そっと防ぎます。</p>
+      </div>
+    </div>
+    <div class="view">
+      <svg class="vi"><use href="#v-timeline"></use></svg>
+      <div><div class="vt">タイムライン</div>
+        <p>遠征や連日参戦の<b>重なり</b>を、横棒でひと目に。掛け持ちの日程被りや、移動が詰まっている週が、見るだけで分かります。</p>
+      </div>
+    </div>
+    <div class="view">
+      <svg class="vi"><use href="#v-pay"></use></svg>
+      <div><div class="vt">支払い</div>
+        <p>いつ・いくらの支払い予定があるかを、時系列で見える化。お財布の山場を、前もって知っておけます。
+        <span class="pin-hint">記録ベース／アプリが引き落とすことはありません</span></p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== もうひとつの役割 ===== -->
+<section class="sec"><div class="wrap">
+  <h2>カレンダーが、先回りでそっと知らせる</h2>
+  <p class="sub">並べて終わりじゃない。あなたのマネージャーとして、見落としそうなところに気づきます。</p>
+
+  <div class="frow">
+    <svg class="fi"><use href="#f-bell"></use></svg>
+    <div>
+      <b>日程被り・チキンレースのお知らせ</b>
+      <p>掛け持ちの「同じ日に2つ」や、当落発表より<b>先に来てしまう締切</b>（＝先に押さえないと間に合わない遠征の宿・交通）を、先回りでそっとお知らせ。急かしません、ただ気づけるように。</p>
+    </div>
+  </div>
+
+  <div class="frow">
+    <svg class="fi"><use href="#f-multi"></use></svg>
+    <div>
+      <b>複数の推しを、まとめて管理</b>
+      <p>掛け持ちでも、ひとつのカレンダーに。「表示対象」でしぼり込めば、今は会いたい人の予定だけを、すっきり表示できます。</p>
+    </div>
+  </div>
+
+  <div class="frow">
+    <svg class="fi"><use href="#f-tap"></use></svg>
+    <div>
+      <b>日付をタップ → その日の予定をポップアップ</b>
+      <p>気になる日をタップすると、その日の予定・締切・支払い予定がまとめて開きます。カレンダーから、すぐに詳細へ。</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== 3 steps ===== -->
+<section class="sec white"><div class="wrap">
+  <h2>使い方は、3ステップ</h2>
+  <p class="sub">むずかしい設定はいりません。登録して、入れて、あとはそっと先回り。</p>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><b>「行きたい」を追加</b><p>ライブ・配信・発売日・当落発表を、推しごとに登録。</p></div>
+    <div class="step"><span class="n">2</span><b>日付・締切を入れる</b><p>申込・入金・キャンセル期限と、かかるお金をひとこと。</p></div>
+    <div class="step"><span class="n">3</span><b>通知でそっと先回り</b><p>あとはマネージャーにおまかせ。締切や被りを、先に知らせます。</p></div>
+  </div>
+  <p class="honest">推し活データは<b>あなたの端末の中だけ</b>に保存。サーバーに送りません。アプリが予約・購入・支払いを代行することはありません（記録と見える化、通知だけ）。</p>
+</div></section>
+
+<!-- ===== final CTA ===== -->
+<section class="cta"><div class="wrap">
+  <h2>推しに、全力で。</h2>
+  <p>リリースをいちはやくお知らせします。メールアドレスだけ・いつでも解除できます。</p>
+  <div class="row">
+    <a class="btn btn-primary" href="../index.html#register">無料で事前登録する</a>
+    <a class="btn btn-ghost" href="../index.html#screens">‹ ほかの画面も見る</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="links">
+    <a href="../index.html">トップ</a>
+    <a href="../index.html#features">できること</a>
+    <a href="../privacy.html">プライバシー</a>
+    <a href="../terms.html">利用規約</a>
+  </div>
+  <p class="fine">推し活マネージャー（愛称：推しマネ）は未リリースの開発中アプリです。画面・仕様・料金は検証中で変わることがあります。推し活データは端末内に保存し、送金・決済の代行は行いません。</p>
+</div></footer>
+
+<script>
+// iframe をビューポート幅に合わせてスケール（index と同じ手法）
+(function(){
+  function fit(){
+    var vp=document.querySelector(".mock-vp"), ifr=document.querySelector(".mock-if");
+    if(!vp||!ifr) return;
+    var s=Math.min(1, vp.clientWidth/392);
+    ifr.style.transform="scale("+s+")";
+    vp.style.height=Math.round(900*s)+"px";
+  }
+  window.addEventListener("resize",fit);
+  window.addEventListener("orientationchange",fit);
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",fit); else fit();
+  setTimeout(fit,300);
+})();
+</script>
+</body>
+</html>

@@ -136,7 +136,10 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;padding:8px;
 .segtab.active{background:var(--oshi-pink);color:#fff}
 /* ---- display height toggle row ---- */
 .disp{display:flex;align-items:center;justify-content:space-between;margin:0 6px 10px}
-.disp .lab{font-weight:700;font-size:11px;color:var(--ink-muted)}
+.dispbtn{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid var(--oshi-pink);
+  border-radius:var(--r-pill);padding:7px 13px;font-family:var(--font-body);font-weight:900;font-size:11.5px;
+  color:var(--oshi-pink-deep);cursor:pointer;box-shadow:var(--sh-card)}
+.dispbtn .dot2{width:10px;height:10px;border-radius:99px;background:var(--oshi-pink)}
 .disp .toggles{display:flex;gap:4px;background:#fff;border:1px solid var(--line);border-radius:var(--r-pill);padding:3px}
 .disp .tg{width:32px;height:26px;border:none;background:transparent;border-radius:99px;display:grid;
   place-items:center;color:var(--ink-muted);cursor:pointer;font-size:14px}
@@ -246,7 +249,7 @@ body{margin:0;min-height:100vh;display:grid;place-items:center;padding:8px;
       </div>
       <!-- 月ビューの高さ切替（折りたたみ／開く／拡張） -->
       <div class="disp">
-        <span class="lab">カレンダーの表示</span>
+        <button class="dispbtn" aria-label="表示する推しをえらぶ"><span class="dot2"></span>表示対象 ▾</button>
         <div class="toggles">
           <button class="tg" aria-label="折りたたみ（一覧）">☰</button>
           <button class="tg active" aria-label="開く（1ヶ月）">▦</button>
