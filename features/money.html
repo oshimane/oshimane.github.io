@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>お金の見通し｜推し活マネージャー</title>
+<meta name="description" content="今月あといくら推しに使える？を、いつでもひと目で。使う・貯める・守るの3つのお金と、このあと数ヶ月の残高の見通しを、推し活マネージャーが先回りで見える化。記録と通知だけ、送金はしません。">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon-180.png">
+<meta name="theme-color" content="#ff5fa2">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="お金の見通し｜推し活マネージャー">
+<meta property="og:description" content="今月あといくら使える？使う・貯める・守るの3つを先回りで見える化。送金はしません、記録と通知だけ。">
+<meta property="og:url" content="https://oshimane.github.io/features/money.html">
+<meta property="og:image" content="https://oshimane.github.io/assets/og-image_1200x630_20260609_231440.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --oshi-pink:#ff5fa2; --oshi-pink-deep:#d61f69; --purple:#8b5cf6; --purple-deep:#6d28d9;
+  --gold:#f59e0b; --gold-ink:#b45309; --mint:#34d399; --mint-ink:#0f9d6b;
+  --cream:#fff7fb; --white:#ffffff; --ink:#2b1b26; --ink-muted:#7a6b74; --line:#f3e3ec;
+  --pink-soft:#ffe6f1; --purple-soft:#ede4ff; --gold-soft:#fdeccc; --mint-soft:#d6f7ec;
+  --grad-primary:linear-gradient(120deg,#ff5fa2 0%,#b06bf0 55%,#8b5cf6 100%);
+  --font-body:"Zen Maru Gothic",system-ui,-apple-system,sans-serif;
+  --font-display:"Kaisei Decol","Zen Maru Gothic",serif;
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-pill:99px;
+  --sh-card:0 8px 22px rgba(214,31,105,.07);
+  --sh-cta:0 12px 26px rgba(214,31,105,.26);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--font-body);font-weight:500;
+  -webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 20px}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,247,251,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;align-items:center;justify-content:space-between;height:58px}
+.back{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:14px;color:var(--oshi-pink-deep);
+  text-decoration:none;min-height:44px;padding:0 6px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;
+  font-family:var(--font-body);font-weight:900;border:none;border-radius:var(--r-pill);min-height:52px;
+  padding:0 26px;font-size:15.5px;transition:transform .16s var(--ease)}
+.btn-primary{background:var(--grad-primary);color:#fff;box-shadow:var(--sh-cta)}
+.btn-ghost{background:#fff;color:var(--oshi-pink-deep);border:1.5px solid var(--oshi-pink)}
+.btn-sm{min-height:44px;padding:0 18px;font-size:14px}
+@media(hover:hover){.btn:hover{transform:translateY(-2px)}}
+.btn:active{transform:translateY(0)}
+.hero{padding:42px 0 8px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:var(--mint-soft);color:var(--mint-ink);
+  font-weight:900;font-size:12.5px;padding:8px 15px;border-radius:var(--r-pill);letter-spacing:.02em}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1.42;margin:16px 0 0;letter-spacing:.01em}
+.hero h1 .pk{color:var(--oshi-pink-deep)}
+.hero .lead{font-size:15px;line-height:1.9;color:var(--ink-muted);margin:14px auto 0;max-width:620px;font-weight:700}
+@media(min-width:760px){.hero h1{font-size:38px}}
+.showcase{display:flex;justify-content:center;margin-top:26px}
+.mock-vp{width:300px;max-width:84vw;overflow:hidden;border-radius:26px;margin:0 auto}
+@media(min-width:760px){.mock-vp{width:360px;max-width:none}}
+.mock-if{width:392px;height:900px;border:0;display:block;transform-origin:top left}
+.note-dev{text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-muted);margin:12px 0 0}
+.sec{padding:44px 0}
+.sec.white{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec h2{font-family:var(--font-display);font-weight:700;font-size:24px;text-align:center;margin:0 0 6px}
+.sec .sub{text-align:center;color:var(--ink-muted);font-weight:700;font-size:13.5px;margin:0 auto 26px;max-width:560px}
+.views{display:grid;grid-template-columns:1fr;gap:14px;max-width:760px;margin:0 auto}
+@media(min-width:680px){.views{grid-template-columns:repeat(3,1fr)}}
+.view{background:var(--cream);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-card);
+  padding:20px 18px 18px;text-align:center}
+.view .vi{width:50px;height:50px;margin:0 auto 8px}
+.view .vt{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--ink);margin:1px 0 6px}
+.view .tagm{display:inline-block;font-size:11px;font-weight:900;color:var(--oshi-pink-deep);background:var(--pink-soft);
+  border-radius:var(--r-pill);padding:3px 11px;margin-bottom:8px}
+.view p{font-size:13px;line-height:1.78;color:var(--ink-muted);margin:0;font-weight:500}
+.frow{display:flex;gap:16px;align-items:flex-start;max-width:680px;margin:0 auto 16px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--sh-card);padding:18px}
+.sec.white .frow{background:var(--cream)}
+.frow .fi{flex:0 0 auto;width:42px;height:42px}
+.frow b{display:block;font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px}
+.frow p{margin:0;font-size:13.5px;line-height:1.8;color:var(--ink-muted);font-weight:500}
+.steps{display:grid;grid-template-columns:1fr;gap:14px;max-width:640px;margin:0 auto}
+@media(min-width:680px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:20px 16px;text-align:center}
+.step .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:99px;
+  background:var(--grad-primary);color:#fff;font-family:var(--font-display);font-weight:700;font-size:18px;margin-bottom:10px}
+.step b{display:block;font-weight:900;font-size:14.5px;color:var(--ink);margin-bottom:4px}
+.step p{margin:0;font-size:12.5px;line-height:1.7;color:var(--ink-muted);font-weight:500}
+.honest{max-width:680px;margin:22px auto 0;background:var(--mint-soft);border:1px solid #bfeede;
+  border-radius:var(--r-md);padding:14px 18px;font-size:12.5px;font-weight:700;color:var(--mint-ink);line-height:1.8}
+.cta{text-align:center;padding:48px 0}
+.cta h2{font-family:var(--font-display);font-weight:700;font-size:25px;margin:0 0 8px}
+.cta p{color:var(--ink-muted);font-weight:700;font-size:14px;margin:0 0 22px}
+.cta .row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+footer{background:#1f1430;color:#e9def0;padding:30px 0 36px;text-align:center}
+footer .links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer a{color:#f4b8d6;text-decoration:none;font-weight:700;font-size:13px;min-height:44px;display:inline-flex;align-items:center}
+footer .fine{font-size:11.5px;color:#b6a6c4;line-height:1.8;font-weight:500;max-width:620px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="m-use" viewBox="0 0 96 96"><rect width="96" height="96" rx="24" fill="#ffe6f1"></rect>
+    <ellipse cx="48" cy="36" rx="20" ry="8" fill="none" stroke="#d61f69" stroke-width="3.4"></ellipse>
+    <path d="M28 36v22c0 4.4 9 8 20 8s20-3.6 20-8V36" fill="none" stroke="#d61f69" stroke-width="3.4"></path>
+    <path d="M44 48h8M48 44v8" stroke="#ff5fa2" stroke-width="3.4" stroke-linecap="round"></path></symbol>
+  <symbol id="m-save" viewBox="0 0 96 96"><rect width="96" height="96" rx="24" fill="#d6f7ec"></rect>
+    <path d="M30 48a18 18 0 1136 0v14H30z" fill="none" stroke="#0f9d6b" stroke-width="3.4" stroke-linejoin="round"></path>
+    <circle cx="60" cy="46" r="2.6" fill="#0f9d6b"></circle>
+    <path d="M30 40c-4 0-6 3-6 6s2 6 6 6" fill="none" stroke="#0f9d6b" stroke-width="3.4"></path>
+    <path d="M44 30h8" stroke="#0f9d6b" stroke-width="3.4" stroke-linecap="round"></path></symbol>
+  <symbol id="m-guard" viewBox="0 0 96 96"><rect width="96" height="96" rx="24" fill="#ede4ff"></rect>
+    <path d="M48 24l16 6v14c0 12-8 20-16 24-8-4-16-12-16-24V30z" fill="none" stroke="#6d28d9" stroke-width="3.4" stroke-linejoin="round"></path>
+    <path d="M40 48l6 6 11-12" stroke="#8b5cf6" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+  <symbol id="m-forecast" viewBox="0 0 96 96"><rect width="96" height="96" rx="24" fill="#fdeccc"></rect>
+    <path d="M26 66l12-14 10 8 22-24" fill="none" stroke="#b45309" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"></path>
+    <circle cx="38" cy="52" r="3.4" fill="#b45309"></circle><path d="M70 36v8h-8" stroke="#b45309" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+  <symbol id="m-report" viewBox="0 0 96 96"><rect width="96" height="96" rx="24" fill="#ffe6f1"></rect>
+    <rect x="30" y="52" width="9" height="16" rx="3" fill="#ff5fa2"></rect>
+    <rect x="44" y="40" width="9" height="28" rx="3" fill="#8b5cf6"></rect>
+    <rect x="58" y="30" width="9" height="38" rx="3" fill="#f59e0b"></rect></symbol>
+  <symbol id="kuroko" viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#2b1b26"></circle>
+    <path d="M20 8c-6 0-9 4-9 10 0 5 0 9 0 12h18c0-3 0-7 0-12 0-6-3-10-9-10z" fill="#1c1020"></path>
+    <ellipse cx="15.5" cy="20" rx="2.1" ry="2.6" fill="#fff"></ellipse><ellipse cx="24.5" cy="20" rx="2.1" ry="2.6" fill="#fff"></ellipse>
+    <path d="M16 26q4 3 8 0" stroke="#ff5fa2" stroke-width="1.6" fill="none" stroke-linecap="round"></path></symbol>
+</svg>
+
+<div class="topbar"><div class="wrap in">
+  <a class="back" href="../index.html#screens">‹ トップへ戻る</a>
+  <span class="brand"><svg width="20" height="20"><use href="#kuroko"></use></svg>推し活マネージャー</span>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="eyebrow">💰 お金の見通し</span>
+  <h1>今月あといくら、<br><span class="pk">推しに使える？</span></h1>
+  <p class="lead">チケット・グッズ・遠征費を、まとめてひとつに。「使う・貯める・守る」の3つのお金を、マネージャーが先回りで見える化します。</p>
+  <div class="showcase">
+    <div>
+      <div class="mock-vp"><iframe class="mock-if" src="../screens/app-money.html" title="お金の見通し画面" loading="lazy"></iframe></div>
+      <p class="note-dev">※ 画面・数値は開発中のサンプルです</p>
+    </div>
+  </div>
+</div></header>
+
+<section class="sec white"><div class="wrap">
+  <h2>3つのお金を、ひとつの画面で</h2>
+  <p class="sub">「使う」を把握し、「貯める」で備え、「守る」で行きすぎを防ぐ。3つそろって、安心して全力。</p>
+  <div class="views">
+    <div class="view">
+      <svg class="vi"><use href="#m-use"></use></svg>
+      <div class="tagm">使う</div>
+      <div class="vt">今月使えるお金</div>
+      <p>予算から、つかった分を引いて。今月あといくら推しに使えるかが、いつでもひと目で分かります。</p>
+    </div>
+    <div class="view">
+      <svg class="vi"><use href="#m-save"></use></svg>
+      <div class="tagm">貯める</div>
+      <div class="vt">遠征の積立サポート</div>
+      <p>次の遠征のゴールから逆算。「月いくら・あと何ヶ月で間に合う」を、そっと見える化します。</p>
+    </div>
+    <div class="view">
+      <svg class="vi"><use href="#m-guard"></use></svg>
+      <div class="tagm">守る</div>
+      <div class="vt">守るお金（防衛ライン）</div>
+      <p>自分で決めたラインに近づいたら、はみ出す前にお知らせ。止めはしません、気づけるだけ。</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>「このあと」を、先に見せる</h2>
+  <p class="sub">今だけじゃなく、数ヶ月先まで。お財布の山場を、前もって知っておけます。</p>
+
+  <div class="frow">
+    <svg class="fi"><use href="#m-forecast"></use></svg>
+    <div>
+      <b>残高の見通し（FORECAST）</b>
+      <p>このあと数ヶ月の手元の現金を、折れ線で。「8月が谷になりそう」「積立があればここを越えられそう」——お金が一番きびしくなる月を、先回りで見つけます。</p>
+    </div>
+  </div>
+
+  <div class="frow">
+    <svg class="fi"><use href="#m-report"></use></svg>
+    <div>
+      <b>推し活レポート</b>
+      <p>今月・1年の推し活を、あとからふり返り。あなたが注いだ全力を、マネージャーが数字でそっと肯定します（評価も説教もしません）。</p>
+    </div>
+  </div>
+
+  <p class="honest">表示される金額は、あなたが入れた記録をもとにした<b>見える化と通知だけ</b>。アプリが口座から引き落としたり、支払いを代行したりすることはありません。データはあなたの端末の中だけに保存します。</p>
+</div></section>
+
+<section class="sec white"><div class="wrap">
+  <h2>使い方は、3ステップ</h2>
+  <p class="sub">入れるのは「予算」と「かかるお金」だけ。あとはマネージャーが計算します。</p>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><b>今月の予算を決める</b><p>推しに使っていい上限を、ひとこと入力。</p></div>
+    <div class="step"><span class="n">2</span><b>かかるお金を入れる</b><p>チケット・グッズ・遠征費を、予定に添えて。</p></div>
+    <div class="step"><span class="n">3</span><b>見通しと通知でそっと先回り</b><p>使える額・谷・防衛ラインを、マネージャーが先に知らせます。</p></div>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>推しに、全力で。</h2>
+  <p>リリースをいちはやくお知らせします。メールアドレスだけ・いつでも解除できます。</p>
+  <div class="row">
+    <a class="btn btn-primary" href="../index.html#register">無料で事前登録する</a>
+    <a class="btn btn-ghost" href="lottery.html">当落シミュも見る ›</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="links">
+    <a href="../index.html">トップ</a>
+    <a href="calendar.html">参戦カレンダー</a>
+    <a href="../privacy.html">プライバシー</a>
+    <a href="../terms.html">利用規約</a>
+  </div>
+  <p class="fine">推し活マネージャー（愛称：推しマネ）は未リリースの開発中アプリです。画面・数値・料金は検証中のサンプルで変わることがあります。推し活データは端末内に保存し、送金・決済の代行は行いません。</p>
+</div></footer>
+
+<script>
+(function(){
+  function fit(){
+    var vp=document.querySelector(".mock-vp"), ifr=document.querySelector(".mock-if");
+    if(!vp||!ifr) return;
+    var s=Math.min(1, vp.clientWidth/392);
+    ifr.style.transform="scale("+s+")";
+    vp.style.height=Math.round(900*s)+"px";
+  }
+  window.addEventListener("resize",fit);window.addEventListener("orientationchange",fit);
+  if(document.readyState==="loading") document.addEventListener("DOMContentLoaded",fit); else fit();
+  setTimeout(fit,300);
+})();
+</script>
+</body>
+</html>
