@@ -530,29 +530,6 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <div class="ps-feats"><span>🎫 当落シミュ</span><span>⏳ 遠征防衛</span><span>🤝 立替・名義</span></div>
         </div>
       </div>
-      <div class="skins" id="skins" role="group" aria-label="アプリの色を着せ替え">
-        <span class="lbl">色を着せ替え（推しのメンバーカラーに）</span>
-        <button data-skin="sakura" aria-pressed="true" title="さくら" style="background:linear-gradient(120deg,#ff5fa2,#8b5cf6)"></button>
-        <button data-skin="midnight" aria-pressed="false" title="ミッドナイトブルー" style="background:linear-gradient(120deg,#2563eb,#06b6d4)"></button>
-        <button data-skin="red" aria-pressed="false" title="レッド" style="background:linear-gradient(120deg,#ef4444,#fb7185)"></button>
-        <button data-skin="pink" aria-pressed="false" title="ピンク" style="background:linear-gradient(120deg,#ec4899,#f9a8d4)"></button>
-        <button data-skin="purple" aria-pressed="false" title="パープル" style="background:linear-gradient(120deg,#a855f7,#ec4899)"></button>
-        <button data-skin="blue" aria-pressed="false" title="ブルー" style="background:linear-gradient(120deg,#3b82f6,#38bdf8)"></button>
-        <button data-skin="sky" aria-pressed="false" title="スカイ（水色）" style="background:linear-gradient(120deg,#0ea5e9,#22d3ee)"></button>
-        <button data-skin="green" aria-pressed="false" title="グリーン" style="background:linear-gradient(120deg,#22c55e,#84cc16)"></button>
-        <button data-skin="yellow" aria-pressed="false" title="イエロー" style="background:linear-gradient(120deg,#eab308,#f59e0b)"></button>
-        <button data-skin="orange" aria-pressed="false" title="オレンジ" style="background:linear-gradient(120deg,#f97316,#fb923c)"></button>
-        <button data-skin="white" aria-pressed="false" title="ホワイト" style="background:linear-gradient(120deg,#cbd5e1,#eef2f7)"></button>
-        <button data-skin="mono" aria-pressed="false" title="モノトーン" style="background:linear-gradient(120deg,#374151,#6b7280)"></button>
-      </div>
-      <div class="fonts" id="fonts" role="group" aria-label="アプリの書体を切替">
-        <span class="lbl">書体を切替</span>
-        <button data-font="maru" aria-pressed="true" style="font-family:'Zen Maru Gothic',sans-serif">まる</button>
-        <button data-font="sharp" aria-pressed="false" style="font-family:'Noto Sans JP',sans-serif">シャープ</button>
-        <button data-font="elegant" aria-pressed="false" style="font-family:'Shippori Mincho',serif">エレガント</button>
-        <button data-font="ud" aria-pressed="false" style="font-family:'BIZ UDPGothic',sans-serif">よみやすさUD</button>
-      </div>
-      <p class="sk-note">推しの色（メンバーカラー）も書体も、無料で自由に着せ替え<br><span style="opacity:.8">※ 推しの“世界観”でまるごと着せ替え（系スキン）は有料・順次。コア機能はずっと無料</span></p>
     </div>
   </section>
 
@@ -636,6 +613,12 @@ footer{background:#fff;border-top:1px solid var(--line)}
       </style>
       <div style="display:flex;gap:34px;justify-content:center;flex-wrap:wrap;align-items:flex-start">
         <figure class="mock">
+          <figcaption style="margin:0 0 12px;font-weight:900;font-size:15px;color:#2b1b26">✏️ 予定をクイック追加<br><span style="font-weight:700;font-size:12px;color:#7a6b74">3タップで登録。抽選の段取り（応募・発表・当選時の入金）も1画面。</span></figcaption>
+          <div class="mock-vp" style="width:100%;overflow:hidden;border-radius:26px;margin:0 auto">
+            <iframe class="mock-if" src="screens/app-add.html" title="予定をクイック追加する画面" loading="lazy" style="width:392px;height:900px;border:0;display:block;transform-origin:top left"></iframe>
+          </div>
+        </figure>
+        <figure class="mock">
           <figcaption style="margin:0 0 12px;font-weight:900;font-size:15px;color:#2b1b26">🏠 ホーム画面（ダッシュボード）<br><span style="font-weight:700;font-size:12px;color:#7a6b74">カウントダウン・残高・ナビをまとめてひと目で。</span></figcaption>
           <div class="mock-vp" style="width:100%;overflow:hidden;border-radius:26px;margin:0 auto">
             <iframe class="mock-if" src="screens/app-home.html" title="ホーム画面（ダッシュボード）" loading="lazy" style="width:392px;height:900px;border:0;display:block;transform-origin:top left"></iframe>
@@ -654,6 +637,13 @@ footer{background:#fff;border-top:1px solid var(--line)}
             <iframe class="mock-if" src="screens/app-money.html" title="お金の見通し画面" loading="lazy" style="width:392px;height:900px;border:0;display:block;transform-origin:top left"></iframe>
           </div>
           <a class="btn btn-ghost btn-sm" href="features/money.html" style="margin-top:14px">お金の見通しを詳しく見る ›</a>
+        </figure>
+        <figure class="mock">
+          <figcaption style="margin:0 0 12px;font-weight:900;font-size:15px;color:#2b1b26">🎫 当落の「もしも」に備える<br><span style="font-weight:700;font-size:12px;color:#7a6b74">当落待ちを一列で。キャンセル料が上がる前に、そっと知らせます。</span></figcaption>
+          <div class="mock-vp" style="width:100%;overflow:hidden;border-radius:26px;margin:0 auto">
+            <iframe class="mock-if" src="screens/app-lottery.html" title="当落管理の画面" loading="lazy" style="width:392px;height:900px;border:0;display:block;transform-origin:top left"></iframe>
+          </div>
+          <a class="btn btn-ghost btn-sm" href="features/lottery.html" style="margin-top:14px">当落の備えを詳しく見る ›</a>
         </figure>
       </div>
     </div>
@@ -686,9 +676,9 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <div class="tag">むずかしい設定はいりません。登録して、入れて、あとはそっと先回り。</div>
       </div>
       <div class="flow">
-        <div class="flowstep"><span class="n">1</span><b>推しと予定を登録</b><p>ライブ・配信・発売日・当落発表を、推しごとに追加。</p></div>
-        <div class="flowstep"><span class="n">2</span><b>費用を入れる</b><p>チケット・グッズ・遠征費と、申込や入金の締切をひとこと。</p></div>
-        <div class="flowstep"><span class="n">3</span><b>見通し・通知でそっと先回り</b><p>使える額・谷・締切・日程被りを、マネージャーが先に知らせます。</p></div>
+        <div class="flowstep"><span class="n">1</span><b>名前と日付だけで登録（3タップ）</b><p>「いつ？」は 今日・週末・未定 からワンタップ。細かいことはあとから足せます。</p></div>
+        <div class="flowstep"><span class="n">2</span><b>抽選なら、段取りも1画面</b><p>応募締切・当落発表・当選したときの入金まで、保存1回でまとめて記録。</p></div>
+        <div class="flowstep"><span class="n">3</span><b>あとは、そっと先回り</b><p>使える額・締切・日程被り・キャンセル料の値上がりまで、マネージャーが先に知らせます。</p></div>
       </div>
     </div>
   </section>
@@ -697,7 +687,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
   <section class="midcta">
     <div class="wrap">
       <b>推しに、全力で。</b>
-      <p>リリースをいちはやくお知らせします。メールアドレスだけ・いつでも解除できます。</p>
+      <p>リリースのお知らせと、ベータ版のさきがけ案内。メールアドレスだけ・いつでも解除できます。</p>
       <a class="btn btn-primary" href="#register">無料で事前登録</a>
     </div>
   </section>
@@ -708,7 +698,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
       <div class="reg-card">
         <div class="kicker">PRE-REGISTER</div>
         <h2>先に、席をおさえておく。</h2>
-        <p class="lead">リリースしたら、マネージャーがいちばんにご連絡します。事前登録は無料です。</p>
+        <p class="lead">リリースしたら、マネージャーがいちばんにご連絡します。<b>ベータ版のさきがけ案内</b>も、登録いただいた方から順にお送りします。事前登録は無料です。</p>
         <div class="reg-count js-countreg">事前登録 受付中</div>
         <form id="regForm" class="reg-form" novalidate>
           <label class="field" style="flex:1"><input id="regEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@oshi.jp" aria-label="メールアドレス"></label>
@@ -744,7 +734,75 @@ footer{background:#fff;border-top:1px solid var(--line)}
     </div>
   </section>
 
+  <!-- ============ MAKER（作り手より・匿名一人称＝サインオフ③ 2026-07-03） ============ -->
+  <section id="maker" class="sec white">
+    <div class="wrap" style="max-width:720px">
+      <div class="head">
+        <div class="kicker">FROM THE MAKER</div>
+        <h2>作り手より</h2>
+      </div>
+      <div class="card" style="padding:22px 24px;line-height:2">
+        <p style="margin:0 0 12px">このアプリは、推し活をしている一人の開発者が作っています。当落待ちのあいだに宿を押さえて、落選してキャンセル料を払って、遠征の月に財布が凍る——ぜんぶ自分のことでした。</p>
+        <p style="margin:0 0 12px">ほしかったのは、家計簿でも、節約の説教でもなくて、<b>「先に教えてくれる裏方」</b>でした。だから推しマネは、指図をしません。準備だけして、そっと知らせます。決めるのは、あなたです。</p>
+        <p style="margin:0">推し活の記録はあなたのスマホの中だけに置く、と決めているのも同じ理由です。誰かに見せるためのデータではなく、あなたが全力で推すための道具だからです。</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ PRICING (A/B/C via ?p=) ============ -->
+  <!-- ============ KISEKAE（着せ替え・系スキン） ============
+       確定戦略: 系/着せ替えは「使い続ける理由」＝入口のフックにしない（kei-era-lp-mvp-strategy③）。
+       2026-07-03 サインオフ①: Hero直下から後半（PRICING手前）へ降格移設。 -->
+  <section id="kisekae" class="sec">
+    <div class="wrap">
+      <div class="head">
+        <div class="kicker">SKIN</div>
+        <h2>毎日ひらく画面を、推しの色に。</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+      <div class="phone" role="img" aria-label="推し活マネージャーのアプリ画面イメージ">
+        <div class="phone-screen">
+          <div class="ps-status"><span>9:41</span><span>●●●&nbsp;⚡</span></div>
+          <div class="ps-appbar">推しマネ <span>ホーム</span></div>
+          <div class="ps-count">
+            <div class="l">次に会えるまで</div>
+            <div class="n">あと<b>133</b>日</div>
+            <div class="e">🎤 11月1日(日)・ソウル遠征</div>
+          </div>
+          <div class="ps-card">
+            <div class="ps-h">💰 今月、推しに使えるお金<b>¥38,400</b></div>
+            <div class="ps-gauge"><span style="width:72%"></span></div>
+            <div class="ps-sub">予算の72%・あと ¥11,600（はみ出す前にそっとお知らせ）</div>
+          </div>
+          <div class="ps-feats"><span>🎫 当落シミュ</span><span>⏳ 遠征防衛</span><span>🤝 立替・名義</span></div>
+        </div>
+      <div class="skins" id="skins" role="group" aria-label="アプリの色を着せ替え">
+        <span class="lbl">色を着せ替え（推しのメンバーカラーに）</span>
+        <button data-skin="sakura" aria-pressed="true" title="さくら" style="background:linear-gradient(120deg,#ff5fa2,#8b5cf6)"></button>
+        <button data-skin="midnight" aria-pressed="false" title="ミッドナイトブルー" style="background:linear-gradient(120deg,#2563eb,#06b6d4)"></button>
+        <button data-skin="red" aria-pressed="false" title="レッド" style="background:linear-gradient(120deg,#ef4444,#fb7185)"></button>
+        <button data-skin="pink" aria-pressed="false" title="ピンク" style="background:linear-gradient(120deg,#ec4899,#f9a8d4)"></button>
+        <button data-skin="purple" aria-pressed="false" title="パープル" style="background:linear-gradient(120deg,#a855f7,#ec4899)"></button>
+        <button data-skin="blue" aria-pressed="false" title="ブルー" style="background:linear-gradient(120deg,#3b82f6,#38bdf8)"></button>
+        <button data-skin="sky" aria-pressed="false" title="スカイ（水色）" style="background:linear-gradient(120deg,#0ea5e9,#22d3ee)"></button>
+        <button data-skin="green" aria-pressed="false" title="グリーン" style="background:linear-gradient(120deg,#22c55e,#84cc16)"></button>
+        <button data-skin="yellow" aria-pressed="false" title="イエロー" style="background:linear-gradient(120deg,#eab308,#f59e0b)"></button>
+        <button data-skin="orange" aria-pressed="false" title="オレンジ" style="background:linear-gradient(120deg,#f97316,#fb923c)"></button>
+        <button data-skin="white" aria-pressed="false" title="ホワイト" style="background:linear-gradient(120deg,#cbd5e1,#eef2f7)"></button>
+        <button data-skin="mono" aria-pressed="false" title="モノトーン" style="background:linear-gradient(120deg,#374151,#6b7280)"></button>
+      </div>
+      <div class="fonts" id="fonts" role="group" aria-label="アプリの書体を切替">
+        <span class="lbl">書体を切替</span>
+        <button data-font="maru" aria-pressed="true" style="font-family:'Zen Maru Gothic',sans-serif">まる</button>
+        <button data-font="sharp" aria-pressed="false" style="font-family:'Noto Sans JP',sans-serif">シャープ</button>
+        <button data-font="elegant" aria-pressed="false" style="font-family:'Shippori Mincho',serif">エレガント</button>
+        <button data-font="ud" aria-pressed="false" style="font-family:'BIZ UDPGothic',sans-serif">よみやすさUD</button>
+      </div>
+      <p class="sk-note">推しの色（メンバーカラー）も書体も、無料で自由に着せ替え<br><span style="opacity:.8">※ 推しの“世界観”でまるごと着せ替え（系スキン）は有料・順次。コア機能はずっと無料</span></p>
+      </div>
+    </div>
+  </section>
+
   <section id="pricing" class="sec">
     <div class="wrap">
       <div class="head">
@@ -838,6 +896,12 @@ footer{background:#fff;border-top:1px solid var(--line)}
 
   /* ---- 設定（公開前に記入） ---- */
   var CONFIG = {
+    // ページの局面（B3-1・公開切替の1点化 2026-07-03）:
+    //   "prereg" = 事前登録（現行） / "beta" = TestFlightベータ募集 / "launch" = 公開後（DLバッジ）
+    // beta/launch へ切り替えるときは MODE と BETA_URL / STORE_URL を書き換えるだけ。
+    MODE: "prereg",
+    BETA_URL: "",   // TestFlight パブリックリンク（beta時に設定）
+    STORE_URL: "",  // App Store / Google Play のURL（launch時に設定）
     // Google Apps Script の WebアプリURL（デプロイ後に貼る）。空ならローカル動作のみ（どこにも送信しない）
     ENDPOINT: "https://script.google.com/macros/s/AKfycbzyPXrgkcMEVsjvUhH3cLmmswhXybSaKfAfmd9wv1UbMpoMXkG-HoijpAR411FFP-M/exec",
     // 事前登録の表示人数（★実数のみ。スプレッドシートの実登録数を時々ここへ反映する。架空の数字は入れない）
@@ -896,6 +960,26 @@ footer{background:#fff;border-top:1px solid var(--line)}
   }
 
   /* ---- 事前登録カウンター（カウントアップ／登録で+1） ---- */
+  /* ---- 局面切替（B3-1）: prereg→beta→launch を CONFIG だけで転換 ---- */
+  function applyMode(){
+    if(CONFIG.MODE === "beta" && CONFIG.BETA_URL){
+      document.querySelectorAll('a.btn-primary[href="#register"]').forEach(function(a){
+        a.textContent = "ベータ版に参加する（無料）";
+      });
+      var h = document.querySelector("#register h2");
+      var lead = document.querySelector("#register .lead");
+      if(h) h.textContent = "ベータ版、はじまりました。";
+      if(lead) lead.innerHTML = 'TestFlight からすぐに試せます。感想はアプリ内からいつでも送れます。<br><a class="btn btn-primary" style="margin-top:12px" href="' + CONFIG.BETA_URL + '">TestFlight で参加する</a>';
+    }
+    if(CONFIG.MODE === "launch" && CONFIG.STORE_URL){
+      document.querySelectorAll('a.btn-primary[href="#register"]').forEach(function(a){
+        a.textContent = "無料でダウンロード";
+        a.setAttribute("href", CONFIG.STORE_URL);
+      });
+    }
+  }
+  applyMode();
+
   var current = (CONFIG.REGISTERED_COUNT || 0); // 表示人数は CONFIG.REGISTERED_COUNT（実数）から。登録で+1
   function fmt(n){ return Math.round(n).toLocaleString(); }
   function animateCounts(from, to, dur){
@@ -985,8 +1069,13 @@ footer{background:#fff;border-top:1px solid var(--line)}
 
   /* ---- スマホモックの着せ替え（色＝data-skin / 書体＝data-font） ---- */
   function initSkins(){
-    var phone = document.querySelector(".phone");
-    if(!phone) return;
+    // phone は hero と着せ替えセクションの2箇所＝両方に適用する。
+    var phones = document.querySelectorAll(".phone");
+    if(!phones.length) return;
+    var phone = { // 既存コード互換の薄いラッパ
+      removeAttribute: function(a){ phones.forEach(function(p){ p.removeAttribute(a); }); },
+      setAttribute: function(a,v){ phones.forEach(function(p){ p.setAttribute(a,v); }); }
+    };
     var colors = document.getElementById("skins");
     if(colors){
       colors.addEventListener("click", function(ev){
