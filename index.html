@@ -203,6 +203,16 @@ section{scroll-margin-top:76px}
 .ps-sub{font-size:10px;font-weight:700;color:var(--pmute)}
 .ps-feats{display:flex;gap:6px;flex-wrap:wrap}
 .ps-feats span{font-size:10px;font-weight:800;background:var(--pcard);border:1px solid var(--pline);border-radius:999px;padding:5px 9px;color:#2b1b26}
+/* 系スキン（世界観まるごと）実画面ギャラリー */
+.kei-head{text-align:center;margin:44px auto 4px;max-width:640px}
+.kei-head h3{font-size:clamp(20px,4.4vw,26px);font-weight:900;margin:0 0 6px;letter-spacing:.01em}
+.kei-head p{font-size:14px;color:var(--ink-muted);margin:0;line-height:1.7}
+.kei-gallery{display:flex;gap:16px;overflow-x:auto;padding:18px 4px 8px;scroll-snap-type:x mandatory;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+@media(min-width:900px){.kei-gallery{justify-content:center;flex-wrap:wrap;overflow:visible}}
+.kei-gallery figure{flex:0 0 auto;width:172px;margin:0;scroll-snap-align:center;text-align:center}
+.kei-gallery img{width:100%;border-radius:22px;border:1px solid rgba(255,255,255,.14);box-shadow:0 16px 40px rgba(31,20,48,.28);display:block}
+.kei-gallery figcaption{margin-top:10px;font-size:12.5px;color:var(--ink-muted);line-height:1.5}
+.kei-gallery figcaption b{display:block;font-size:14px;color:var(--ink);font-weight:900}
 /* 着せ替えスウォッチ（色） */
 .skins{display:flex;gap:9px;align-items:center;justify-content:center;margin-top:16px;flex-wrap:wrap;max-width:330px;margin-left:auto;margin-right:auto}
 .skins .lbl{flex-basis:100%;text-align:center;font-size:12px;font-weight:800;color:var(--ink-muted);margin-bottom:2px}
@@ -774,8 +784,22 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <button data-font="elegant" aria-pressed="false" style="font-family:'Shippori Mincho',serif">エレガント</button>
         <button data-font="ud" aria-pressed="false" style="font-family:'BIZ UDPGothic',sans-serif">よみやすさUD</button>
       </div>
-      <p class="sk-note">推しの色（メンバーカラー）も書体も、無料で自由に着せ替え<br><span style="opacity:.8">※ 推しの“世界観”でまるごと着せ替え（系スキン）は有料・順次。コア機能はずっと無料</span></p>
+      <p class="sk-note">推しの色（メンバーカラー）も書体も、無料で自由に着せ替え</p>
       </div>
+
+      <!-- 系スキン（世界観まるごと・有料）実画面ギャラリー：2026-07-04 追加 -->
+      <div class="kei-head">
+        <h3>推しの“世界観”で、まるごと着せ替え。</h3>
+        <p>色だけじゃない——背景・書体・光り方まで変わる「系スキン」。<span style="opacity:.75">下は開発中アプリの実画面です。</span></p>
+      </div>
+      <div class="kei-gallery" role="list" aria-label="系スキンの実画面">
+        <figure role="listitem"><img src="assets/screens/skins/neon.png" alt="ネオン系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ネオン</b>サイバー・電光掲示板</figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/noir.png" alt="ノワール系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ノワール</b>耽美・V系の夜</figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/star.png" alt="スター系スキンの実際のホーム画面" loading="lazy"><figcaption><b>スター</b>王道アイドル</figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/dream.png" alt="ドリーム系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ドリーム</b>ゆめかわ</figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/splash.png" alt="スプラッシュ系スキンの実際のホーム画面" loading="lazy"><figcaption><b>スプラッシュ</b>ポップ・インク</figcaption></figure>
+      </div>
+      <p class="sk-note" style="margin-top:14px"><span style="opacity:.8">※ 色・書体の着せ替えはずっと無料。系スキン（世界観まるごと）は有料・順次公開。コア機能はずっと無料です。</span></p>
     </div>
   </section>
 
