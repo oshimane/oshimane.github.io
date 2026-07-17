@@ -50,7 +50,7 @@
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "JPY",
-    "description": "基本機能は無料（事前登録受付中・着せ替えなど一部有料を検証中）"
+    "description": "基本機能は無料（事前登録受付中・有料は着せ替えと複数推し管理を検証中）"
   }
 }
 </script>
@@ -213,6 +213,9 @@ section{scroll-margin-top:76px}
 .kei-gallery img{width:100%;border-radius:22px;border:1px solid rgba(255,255,255,.14);box-shadow:0 16px 40px rgba(31,20,48,.28);display:block}
 .kei-gallery figcaption{margin-top:10px;font-size:12.5px;color:var(--ink-muted);line-height:1.5}
 .kei-gallery figcaption b{display:block;font-size:14px;color:var(--ink);font-weight:900}
+.kei-badge{display:block;margin-top:5px;padding:2px 9px;border-radius:var(--r-pill);font-size:10.5px;font-weight:700;line-height:1.7}
+.kei-badge.soon{background:var(--gold-soft);color:var(--gold-ink)}
+.kei-badge.live{background:var(--mint-soft);color:var(--mint-ink)}
 /* 着せ替えスウォッチ（色） */
 .skins{display:flex;gap:9px;align-items:center;justify-content:center;margin-top:16px;flex-wrap:wrap;max-width:330px;margin-left:auto;margin-right:auto}
 .skins .lbl{flex-basis:100%;text-align:center;font-size:12px;font-weight:800;color:var(--ink-muted);margin-bottom:2px}
@@ -553,7 +556,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <ul class="blt">
             <li>月／締切／タイムライン／支払いの<b>4つの見方</b>で先回り</li>
             <li>掛け持ちの<b>日程被り</b>・当落より先に来る締切をお知らせ</li>
-            <li>複数の推しを、まとめて管理</li>
+            <li>参戦・配信・締切を、ひとつのカレンダーでまとめて管理</li>
           </ul>
           <div class="detail"><a class="detail-link" href="features/calendar.html">参戦カレンダーを詳しく見る ›</a></div>
         </div>
@@ -586,7 +589,6 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <ul class="blt">
             <li>立替の記録と<b>精算の見える化</b>（送金はしません・記録のみ）</li>
             <li>入金期限・名義変更の締切を、先回りでそっとお知らせ</li>
-            <li>今月・1年の推し活を、<b>レポート</b>でふり返り</li>
           </ul>
           <div class="cite">※規約に沿った範囲で。名義貸し・転売はしません。</div>
         </div>
@@ -686,6 +688,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <p class="lead">リリースしたら、マネージャーがいちばんにご連絡します。<b>ベータ版のさきがけ案内</b>も、登録いただいた方から順にお送りします。事前登録は無料です。</p>
         <div class="reg-count js-countreg">事前登録 受付中</div>
         <form id="regForm" class="reg-form" novalidate>
+          <input type="text" name="website" id="regHp" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="field" style="flex:1"><input id="regEmail" type="email" inputmode="email" autocomplete="email" placeholder="you@oshi.jp" aria-label="メールアドレス"></label>
           <button class="btn btn-primary" type="submit">無料で事前登録する</button>
         </form>
@@ -784,7 +787,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <button data-font="elegant" aria-pressed="false" style="font-family:'Shippori Mincho',serif">エレガント</button>
         <button data-font="ud" aria-pressed="false" style="font-family:'BIZ UDPGothic',sans-serif">よみやすさUD</button>
       </div>
-      <p class="sk-note">推しの色（メンバーカラー）も書体も、無料で自由に着せ替え</p>
+      <p class="sk-note">推しの色（メンバーカラー）も書体も、用意されたプリセットから無料で着せ替え</p>
       </div>
 
       <!-- 系スキン（世界観まるごと・有料）実画面ギャラリー：2026-07-04 追加 -->
@@ -793,12 +796,13 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <p>色だけじゃない——背景・書体・光り方まで変わる「系スキン」。<span style="opacity:.75">下は開発中アプリの実画面です。</span></p>
       </div>
       <div class="kei-gallery" role="list" aria-label="系スキンの実画面">
-        <figure role="listitem"><img src="assets/screens/skins/neon.png" alt="ネオン系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ネオン</b>サイバー・電光掲示板</figcaption></figure>
-        <figure role="listitem"><img src="assets/screens/skins/noir.png" alt="ノワール系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ノワール</b>耽美・V系の夜</figcaption></figure>
-        <figure role="listitem"><img src="assets/screens/skins/star.png" alt="スター系スキンの実際のホーム画面" loading="lazy"><figcaption><b>スター</b>王道アイドル</figcaption></figure>
-        <figure role="listitem"><img src="assets/screens/skins/dream.png" alt="ドリーム系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ドリーム</b>ゆめかわ</figcaption></figure>
-        <figure role="listitem"><img src="assets/screens/skins/splash.png" alt="スプラッシュ系スキンの実際のホーム画面" loading="lazy"><figcaption><b>スプラッシュ</b>ポップ・インク</figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/neon.png" alt="ネオン系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ネオン</b>サイバー・電光掲示板<span class="kei-badge soon">近日公開</span></figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/noir.png" alt="ノワール系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ノワール</b>耽美・V系の夜<span class="kei-badge soon">近日公開</span></figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/star.png" alt="スター系スキンの実際のホーム画面" loading="lazy"><figcaption><b>スター</b>王道アイドル<span class="kei-badge live">先行公開中</span></figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/dream.png" alt="ドリーム系スキンの実際のホーム画面" loading="lazy"><figcaption><b>ドリーム</b>ゆめかわ<span class="kei-badge soon">近日公開</span></figcaption></figure>
+        <figure role="listitem"><img src="assets/screens/skins/splash.png" alt="スプラッシュ系スキンの実際のホーム画面" loading="lazy"><figcaption><b>スプラッシュ</b>ポップ・インク<span class="kei-badge soon">近日公開</span></figcaption></figure>
       </div>
+      <p class="sk-note" style="margin-top:10px">まずSTAR系から公開し、反響を見て順次追加予定です。</p>
       <p class="sk-note" style="margin-top:14px"><span style="opacity:.8">※ 色・書体の着せ替えはずっと無料。系スキン（世界観まるごと）は有料・順次公開。コア機能はずっと無料です。</span></p>
     </div>
   </section>
@@ -815,10 +819,10 @@ footer{background:#fff;border-top:1px solid var(--line)}
       <div class="price-grid">
         <div class="plan featured">
           <span class="ribbon">ずっと無料</span>
-          <div class="label">フリー（ぜんぶ入り）</div>
+          <div class="label">フリー（推し1人・コア機能ぜんぶ入り）</div>
           <div class="pricerow"><span class="num">0</span><span class="yen">円</span><span class="per">/月</span></div>
           <div class="note">推し活の段取りとお金の先回りは、まるごと無料。</div>
-          <ul><li>参戦カレンダー</li><li>使えるお金の先回り管理</li><li>当落シミュ・破産シミュ</li><li>遠征チキンレース</li><li>共同購入の立替・名義管理</li><li>推し色＆書体の着せ替え</li><li>スマホ内保存</li></ul>
+          <ul><li>推し1人ぶんの管理（複数推しは有料・検証中）</li><li>参戦カレンダー</li><li>使えるお金の先回り管理</li><li>当落シミュ・破産シミュ</li><li>遠征チキンレース</li><li>共同購入の立替・名義管理</li><li>推し色＆書体の着せ替え</li><li>スマホ内保存</li></ul>
           <a class="btn btn-primary btn-block" href="#register">無料で事前登録</a>
         </div>
         <div class="plan">
@@ -836,7 +840,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <a class="btn btn-ghost btn-block" href="#register">事前登録して続報を待つ</a>
         </div>
       </div>
-      <p class="price-fine">※ コア機能（日程・お金の先回り・当落/遠征/立替の管理）はずっと無料。有料は世界観の着せ替えのみ。料金は検証中のため予告なく変更する場合があり、事前登録の方には確定時にお知らせします。</p>
+      <p class="price-fine">※ コア機能（日程・お金の先回り・当落/遠征/立替の管理）はずっと無料。有料は世界観の着せ替えと複数推しの管理（検証中）のみ。料金は検証中のため予告なく変更する場合があり、事前登録の方には確定時にお知らせします。</p>
     </div>
   </section>
 
@@ -845,7 +849,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
     <div class="wrap">
       <div class="head"><div class="kicker">FAQ</div><h2>よくある質問</h2></div>
       <div class="faq" id="faqList">
-        <div class="qa open"><button type="button"><span>無料で使えますか？</span><span class="pm">−</span></button><div class="ans"><p>はい。参戦カレンダーでの日程管理や、使えるお金の管理など、基本機能はずっと無料です。当落シミュなど一部は有料プラン（検証中）を予定しています。</p></div></div>
+        <div class="qa open"><button type="button"><span>無料で使えますか？</span><span class="pm">−</span></button><div class="ans"><p>はい。参戦カレンダーでの日程管理や、使えるお金の管理、当落シミュを含むコア機能はずっと無料です。有料は世界観の着せ替えと、複数推しの管理（検証中）のみです。</p></div></div>
         <div class="qa"><button type="button"><span>データはどこに保存されますか？</span><span class="pm">＋</span></button><div class="ans"><p>あなたのスマホの中に保存します。推し活の記録を当社サーバーへ送信することはありません。</p></div></div>
         <div class="qa"><button type="button"><span>Androidは対応していますか？</span><span class="pm">＋</span></button><div class="ans"><p>はい。iOS / Android の両方に対応する予定です。事前登録いただいた方に、対応状況とリリース時期をお知らせします。</p></div></div>
         <div class="qa"><button type="button"><span>マネージャーって、お説教してきませんか？</span><span class="pm">＋</span></button><div class="ans"><p>しません。指図や採点はせず、面倒な計算と段取りを裏方でこなす「黒子」です。決めるのはいつもあなた。画面ロック（PIN/顔認証）など軽い配慮も検討中ですが、まずは日程とお金の管理に集中します。</p></div></div>
@@ -876,7 +880,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
       <div class="tl">日程もお金も、あなたのマネージャーにおまかせ。</div>
     </div>
     <div class="col"><h4>サービス</h4><a href="#features">できること</a><a href="#pricing">料金</a><a href="#faq">よくある質問</a></div>
-    <div class="col"><h4>SNS</h4><a href="#">X（旧Twitter）</a><a href="#">Instagram</a></div>
+    <!-- TODO(T-day): SNSアカウント開設後に実URLで復活 @oshimane_app 候補 -->
+    <!-- <div class="col"><h4>SNS</h4><a href="#">X（旧Twitter）</a><a href="#">Instagram</a></div> -->
     <div class="col"><h4>サポート</h4><a href="privacy.html">プライバシーポリシー</a><a href="https://docs.google.com/forms/d/e/1FAIpQLSd1UuS2Df4RChErDfS9EIKhs2yDcD9VCvIm9_BNgUq_Bc02vw/viewform" target="_blank" rel="noopener noreferrer">フィードバック窓口</a><a href="terms.html">利用規約</a></div>
   </div>
   <div class="wrap foot-bar"><span>© 2026 推し活マネージャー</span><span>未リリース／事前登録受付中</span></div>
@@ -893,6 +898,9 @@ footer{background:#fff;border-top:1px solid var(--line)}
 <script>
 (function(){
   "use strict";
+
+  /* ---- フォーム読み込み時刻（スパム対策：異常に早い送信の検知用。GAS側で判定） ---- */
+  var PAGE_LOAD_TS = Date.now();
 
   /* ---- 設定（公開前に記入） ---- */
   var CONFIG = {
@@ -1017,6 +1025,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
   function initForm(){
     var form = document.getElementById("regForm");
     var email = document.getElementById("regEmail");
+    var hp = document.getElementById("regHp");
     var err = document.getElementById("regErr");
     var ok = document.getElementById("regOk");
     if(!form) return;
@@ -1029,8 +1038,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
         return;
       }
       err.textContent = "";
-      // 事前登録を記録（メール＋変種＋流入元をエンドポイントへ）
-      track("register", { email: v });
+      // 事前登録を記録（メール＋変種＋流入元＋スパム判定用の hp/elapsed をエンドポイントへ。判定はGAS側）
+      track("register", { email: v, hp: (hp ? hp.value : ""), elapsed: Math.round((Date.now() - PAGE_LOAD_TS) / 1000) });
       form.classList.add("hidden");
       ok.classList.remove("hidden");
       // カウント +1（軽いアニメーション）
