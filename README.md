@@ -1,6 +1,6 @@
-# oshimane-lp（推し活マネージャー LP・公開サイト）
+# oshimane-lp（推しマネ LP・公開サイト）
 
-推し活マネージャー（愛称：推しマネ）の GitHub Pages 公開サイト。**このリポジトリが LP の唯一の正典（単一正典）**。
+推しマネの GitHub Pages 公開サイト。**このリポジトリが LP の唯一の正典（単一正典）**。
 
 - リモート: `oshimane/oshimane.github.io`
 - 本番URL: **https://oshimane.github.io/**
@@ -16,7 +16,7 @@ LP（`index.html` 等）の編集は**必ずこのリポジトリで行い、com
 
 ## ファイル構成
 
-- `index.html` … LP 本体（推し活マネージャー）
+- `index.html` … LP 本体（推しマネ）
 - `privacy.html` … プライバシーポリシー
 - `terms.html` … 利用規約
 - `features/` … 機能詳細ページ（calendar / lottery / money）
