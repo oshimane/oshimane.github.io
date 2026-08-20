@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- tenant: internal / distribution: public(予定) -->
+<!-- ▼2026-08-20 新規作成: 有料機能（系スキン買い切り¥480 / Premium月額¥380）の提供開始に伴い、特商法11条の表示として新設。
+     ★公開前に2点の記入が必要（下の note-draft 参照）: ①電話番号 ②所在地の確定（松本＝既掲載/管轄と一致 か、新宿＝ASC登録 か）。
+     ★記入前に push しない（GitHub Pages は push で公開される）。
+     旧: 法務レビュー反映済(2026-06-10): 第32条事業者情報(画像化=検索非掲載)・未成年条項本文化・安全管理措置請求対応・将来取得記述削除・削除請求明示。事業者=J・エンタープライズ/代表者・所在地は画像(assets/jigyosha-info_*.png)・テキスト非掲載/oshimane.support@gmail.com。施行日=2026-08-05（2026-08-05 確定）。Phase1ローンチ時点の内容。 -->
+<!-- ▼2026-08-04: サービス名を現行の「推しマネ」に統一（経緯=oshikatsu-app `docs/spec/decisions.md` ADR-002）。当時は施行前だったため「改定」ではなく施行前ドラフトの表記統一。取得する情報・利用目的・第三者提供・保管方法・事業者（J・エンタープライズ）・連絡先に変更なし。 -->
+<!-- ▼2026-08-05: 版を一本化し施行日を確定（制定 2026-06-10／改定・施行 2026-08-05）。従来 vault 側にのみ存在した 2026-06-14 追補（利用者画像・共有・組込スキンIP）を本ファイルへ統合し、**LP repo を唯一の正本**とした（.claude/rules/oshikatsu-lp.md 準拠・vault はスナップショットへ戻す）。★同一日付「2026年6月10日」を名乗る異内容2版が併存する状態を解消するのが目的＝どの版を表示したかの立証（民法548条の2第1項）を崩さないため。★本改定時点で**組入れ（民法548条の2第1項）が成立した相手方は存在しない**＝(a)改定前の版は施行日が未確定（「施行日は公開日に更新」）で施行に至っておらず、(b)事前登録フォームに規約への同意導線が無い（LP index.html の全36コミットでチェックボックス0件）ため同項1号の合意も2号の事前表示も存在しない。したがって民法548条の4の「変更」に当たらず第13条の7日前周知は不要。※ページ自体は 2026-08-04 時点で到達可能（noindex）だが、到達可能性は施行・組入れとは別。 -->
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>特定商取引法に基づく表示｜推しマネ</title>
+<meta name="description" content="推しマネの特定商取引法に基づく表示。有料機能（系スキン買い切り・Premium 月額）の販売条件。">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon-180.png">
+<meta name="theme-color" content="#ff5fa2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700&family=Kaisei+Decol:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{--pink:#ff5fa2;--pink-d:#d61f69;--purple:#8b5cf6;--purple-d:#6d28d9;--mint:#34d399;--cream:#fff7fb;--ink:#2b1b26;--mute:#7a6b74;--line:#f3e3ec;--grad:linear-gradient(120deg,#ff5fa2 0%,#b06bf0 55%,#8b5cf6 100%)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Zen Maru Gothic",system-ui,-apple-system,"Hiragino Maru Gothic ProN",sans-serif;color:var(--ink);background:var(--cream);line-height:1.9;font-weight:500}
+  .topbar{background:rgba(255,247,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+  .topbar .in{max-width:820px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:"Kaisei Decol",serif;font-weight:700;font-size:18px}
+  .brand .pk{color:var(--pink-d)}
+  .topbar a{color:var(--purple-d);font-weight:700;font-size:14px;text-decoration:none}
+  header{background:var(--grad);color:#fff;padding:40px 20px}
+  header .in{max-width:820px;margin:0 auto}
+  header h1{font-family:"Kaisei Decol",serif;font-weight:700;font-size:clamp(24px,5vw,32px)}
+  header p{opacity:.95;margin-top:8px;font-size:14px}
+  main{max-width:820px;margin:0 auto;padding:28px 20px 80px}
+  .note-draft{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 16px;font-size:13px;color:#9a3412;margin-bottom:22px}
+  .lead{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:14.5px}
+  h2{font-family:"Kaisei Decol",serif;font-weight:700;font-size:18px;margin:30px 0 8px;padding-left:12px;border-left:5px solid var(--pink)}
+  p,li{font-size:14.5px}
+  ol.sec{list-style:none;counter-reset:s;padding:0}
+  section.item{margin:22px 0}
+  ul{margin:6px 0 6px 20px}
+  .ph{background:#fff0f6;border-bottom:1px dashed var(--pink);color:var(--pink-d);font-weight:700;padding:0 4px;border-radius:3px}
+  .callout{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;padding:14px 16px;margin:14px 0;font-size:14px}
+  .callout b{color:#15803d}
+  footer{border-top:1px solid var(--line);max-width:820px;margin:0 auto;padding:24px 20px 60px;font-size:12.5px;color:var(--mute)}
+  footer a{color:var(--purple-d);font-weight:700;text-decoration:none}
+  .updated{font-size:13px;color:var(--mute);margin-top:6px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in">
+  <span class="brand">推し<span class="pk">マネ</span></span>
+  <a href="index.html">← トップへ</a>
+</div></div>
+
+<header><div class="in">
+  <h1>特定商取引法に基づく表示</h1>
+  <p>有料機能の販売条件について。</p>
+</div></header>
+
+<main>
+  <div class="note-draft"><strong>⚠️ このページは未完成です。公開前に2点の記入が必要です。</strong><br>
+  ① <strong>電話番号</strong>（下記「連絡先」）— 特商法11条の必須記載事項です。<br>
+  ② <strong>所在地の確定</strong> — 下記は<strong>松本</strong>（プライバシーポリシーの事業者情報および利用規約第14条の管轄と一致）で書いていますが、App Store Connect には<strong>新宿（西新宿水間ビル2F）</strong>が登録されています。どちらを表示するかを決めてください。<br>
+  記入・確定するまで<strong>公開（push）しないでください。</strong></div>
+
+  <section class="item"><h2>販売事業者</h2>
+    <p>J・エンタープライズ</p>
+  </section>
+
+  <section class="item"><h2>運営統括責任者</h2>
+    <p>角田 樹来</p>
+  </section>
+
+  <section class="item"><h2>所在地</h2>
+    <p>〒390-0872　長野県松本市北深志3-6-11</p>
+    <p class="note-mini">※ 上記の確定は保留中（冒頭の注記参照）。</p>
+  </section>
+
+  <section class="item"><h2>連絡先</h2>
+    <ul>
+      <li>メール：oshimane.support@gmail.com</li>
+      <li>電話番号：<strong style="color:#d61f69">【要記入】</strong></li>
+    </ul>
+    <p>お問い合わせは原則としてメールで承ります。お電話でのご連絡をご希望の場合は、上記メールアドレスへその旨をお知らせください。</p>
+  </section>
+
+  <section class="item"><h2>販売価格</h2>
+    <ul>
+      <li><strong>系スキン（買い切り）</strong>：480円（税込）／1つにつき</li>
+      <li><strong>Premium（月額）</strong>：380円（税込）／月</li>
+    </ul>
+    <p>価格はアプリ内の購入画面に表示されます。<strong>表示価格が本表示と異なる場合は、購入画面の表示が優先します</strong>（プラットフォームの為替・税制の変更により変動することがあります）。</p>
+  </section>
+
+  <section class="item"><h2>商品代金以外に必要な費用</h2>
+    <p>アプリのダウンロードおよびご利用に必要な通信料は、お客様のご負担となります。それ以外に当方が申し受ける費用はありません。</p>
+  </section>
+
+  <section class="item"><h2>支払方法・支払時期</h2>
+    <ul>
+      <li><strong>支払方法</strong>：App Store（Apple ID）または Google Play（Google アカウント）に登録された支払方法によります。</li>
+      <li><strong>支払時期</strong>：買い切りは購入手続きの完了時。月額は購入手続きの完了時、および以後の各更新日。</li>
+    </ul>
+  </section>
+
+  <section class="item"><h2>役務の提供時期</h2>
+    <p>購入手続きの完了後、ただちにご利用いただけます。</p>
+  </section>
+
+  <section class="item"><h2>定期課金（自動更新）について</h2>
+    <ul>
+      <li>Premium（月額）は、解約されない限り<strong>1か月ごとに自動更新</strong>されます。</li>
+      <li>各更新時に、上記の月額料金が課金されます。</li>
+      <li><strong>更新日の24時間以上前に解約されない場合、次の期間の料金が課金されます。</strong></li>
+      <li>解約は、App Store または Google Play の<strong>サブスクリプション設定画面</strong>から、いつでも行えます。アプリの削除では解約されません。</li>
+      <li>解約後も、当該期間の終了日まではご利用いただけます。</li>
+      <li><strong>買い切りで購入した系スキンは、Premium を解約した後も引き続きご利用いただけます。</strong></li>
+    </ul>
+  </section>
+
+  <section class="item"><h2>返品・キャンセルについて</h2>
+    <p>本サービスの有料機能は<strong>デジタルコンテンツ</strong>であり、購入手続きの完了によりただちにご利用いただけるため、<strong>お客様のご都合による返品・キャンセルはお受けできません。</strong></p>
+    <p>ただし、<strong>返金の可否および手続は、購入されたプラットフォーム（App Store / Google Play）の定めによります。</strong>返金をご希望の場合は、各プラットフォームの窓口へお申し出ください。</p>
+    <p>提供する機能に不具合があり、当方の責めに帰すべき事由によりご利用いただけない場合は、上記のお問い合わせ先へご連絡ください。</p>
+  </section>
+
+  <section class="item"><h2>動作環境</h2>
+    <p>iOS 版および Android 版アプリ「推しマネ」。対応 OS バージョンは、App Store / Google Play の各ストアページに表示されます。</p>
+  </section>
+
+  <section class="item"><h2>未成年の方のご購入</h2>
+    <p>13歳以上の未成年の方が有料機能を購入される場合は、あらかじめ法定代理人（保護者）の同意を得てください。プラットフォームが提供する保護者向けの管理機能（ファミリー共有・承認と購入のリクエスト等）のご利用を推奨します。</p>
+  </section>
+
+  <p class="updated">制定日・施行日：2026年8月27日</p>
+</main>
+
+<footer style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap">
+  <div>
+    <a href="index.html">推しマネ トップ</a> ・ <a href="index.html#register">事前登録</a> ・ <a href="terms.html">利用規約</a> ・ <a href="privacy.html">プライバシーポリシー</a><br>
+    © 2026 推しマネ
+  </div>
+  <div style="text-align:right">
+    <img src="assets/jigyosha-info_20260610_175625.png" alt="事業者情報（お問い合わせ窓口へのご請求に応じて開示します）" style="width:294px;max-width:100%;height:auto">
+  </div>
+</footer>
+</body>
+</html>
