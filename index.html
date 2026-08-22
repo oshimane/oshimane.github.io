@@ -50,7 +50,7 @@
     "@type": "Offer",
     "price": "0",
     "priceCurrency": "JPY",
-    "description": "基本機能は無料（事前登録受付中・有料は着せ替えと複数推し管理を検証中）"
+    "description": "基本機能は無料（推し1人）。有料は世界観の着せ替え（買い切り180円）と複数推しの管理（月額380円）。"
   }
 }
 </script>
@@ -703,7 +703,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <span class="badge b-purple">推し活の記録はスマホ内に保存</span>
         </div>
         <div class="reg-fine">お預かりするのは<b>メールアドレスのみ</b>です。<b>リリースのお知らせと事前登録特典のご連絡にだけ</b>使い、ほかの目的には利用しません。<br>
-          <b>事前登録で購入が確定することはありません。</b>有料プランの内容・料金は検証中で、提供を始めるときにあらためてご案内します。<br>
+          <b>事前登録で購入が確定することはありません。</b>有料の内容と料金は決まっていて（着せ替え 買い切り 180円／複数推し 月額 380円）、購入はアプリ内の購入画面からのみです。<br>
           配信の停止・登録情報の削除は、<a href="mailto:oshimane.support@gmail.com">oshimane.support@gmail.com</a> へご連絡いただければいつでも承ります。取扱いの詳細は<a href="privacy.html">プライバシーポリシー</a> ・ <a href="tokushoho.html">特定商取引法に基づく表示</a>をご覧ください。</div>
       </div>
     </div>
@@ -816,8 +816,8 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <div class="kicker">PRICING</div>
         <h2>コアは、ずっと無料。</h2>
         <div class="tag">日程も、お金の先回りも、当落・遠征・立替の管理も——<strong>推し1人なら</strong>ぜんぶ無料。</div>
-        <div style="margin-top:10px;font-size:13.5px;color:var(--ink-muted)">有料は<strong>「複数の推しをまとめて管理」</strong>と<strong>「推しの世界観で着せ替え」</strong>の2つだけ。料金も支払い方法（<strong>買い切り中心</strong>・順次追加）も決め打ちせず、いちばん無理のない形を一緒にさがします。</div>
-        <div style="margin-top:14px"><span class="badge b-gold">着せ替え（世界観）は順次・検証中（料金案 <span id="planVariant">A</span>・仮）</span></div>
+        <div style="margin-top:10px;font-size:13.5px;color:var(--ink-muted)">有料は<strong>「複数の推しをまとめて管理」</strong>と<strong>「推しの世界観で着せ替え」</strong>の2つだけ。世界観スキンは<strong>買い切り 180円</strong>（1つにつき）、複数推しは<strong>月額 380円</strong>です。</div>
+        <div style="margin-top:14px"><span class="badge b-gold">世界観スキンは STAR から順次公開</span></div>
       </div>
       <div class="price-grid">
         <div class="plan featured">
@@ -825,25 +825,25 @@ footer{background:#fff;border-top:1px solid var(--line)}
           <div class="label">フリー（推し1人・コア機能ぜんぶ入り）</div>
           <div class="pricerow"><span class="num">0</span><span class="yen">円</span><span class="per">/月</span></div>
           <div class="note">推し活の段取りとお金の先回りは、まるごと無料。</div>
-          <ul><li>推し1人ぶんの管理（複数推しは有料・検証中）</li><li>参戦カレンダー</li><li>使えるお金の先回り管理</li><li>当落シミュ・破産シミュ</li><li>遠征チキンレース</li><li>共同購入の立替・名義管理</li><li>推し色＆書体の着せ替え</li><li>スマホ内保存</li></ul>
+          <ul><li>推し1人ぶんの管理（複数推しは月額）</li><li>参戦カレンダー</li><li>使えるお金の先回り管理</li><li>当落シミュ・破産シミュ</li><li>遠征チキンレース</li><li>立替・名義の記録</li><li>推し色＆書体の着せ替え</li><li>スマホ内保存</li></ul>
           <a class="btn btn-primary btn-block" href="#register">無料で事前登録</a>
         </div>
         <div class="plan">
-          <div class="label">推しの世界観で着せ替え（仮）</div>
-          <div class="pricerow"><span class="num" id="premPrice">380</span><span class="yen">円</span><span class="per">〜（買い切り中心・検証中）</span></div>
-          <div class="note">推しの世界観で、アプリまるごと着せ替え。自分の推しの色で彩る、自己表現の楽しみ。買い切り中心で検証中。</div>
+          <div class="label">推しの世界観で着せ替え</div>
+          <div class="pricerow"><span class="num" id="premPrice">180</span><span class="yen">円</span><span class="per">（買い切り・1つにつき）</span></div>
+          <div class="note">推しの世界観で、アプリまるごと着せ替え。自分の推しの色で彩る、自己表現の楽しみ。買い切りなので、解約という概念がありません。</div>
           <ul><li>推しの世界観スキン（順次追加）</li><li>フォントも世界観に</li><li>推しごとに着せ替え</li><li>自分だけの“推しの城”</li></ul>
           <a class="btn btn-ghost btn-block" href="#register">事前登録して続報を待つ</a>
         </div>
         <div class="plan">
-          <div class="label">まるごと（仮）</div>
-          <div class="pricerow"><span class="num" id="famPrice">680</span><span class="yen">円</span><span class="per">〜（料金・支払い方法とも検証中）</span></div>
-          <div class="note">世界観まるごと＋複数の推しをまとめて。料金・支払い方法ともに検証中。</div>
-          <ul><li>着せ替え（世界観）全部入り</li><li>複数の推しを管理</li><li>新しい世界観を継続配信</li></ul>
+          <div class="label">まるごと（月額）</div>
+          <div class="pricerow"><span class="num" id="famPrice">380</span><span class="yen">円</span><span class="per">/月</span></div>
+          <div class="note">複数の推しをまとめて管理。自由な色と写真の背景も。世界観スキンは1つお試しでついてきます（解約すると、お試しの1つは使えなくなります。買い切りで持っているものは残ります）。</div>
+          <ul><li>複数の推しを管理</li><li>自由な色・写真の背景</li><li>世界観スキン1つお試し（STAR）</li></ul>
           <a class="btn btn-ghost btn-block" href="#register">事前登録して続報を待つ</a>
         </div>
       </div>
-      <p class="price-fine">※ コア機能（日程・お金の先回り・当落/遠征/立替の管理）はずっと無料。有料は世界観の着せ替えと複数推しの管理（検証中）のみ。料金は検証中のため予告なく変更する場合があり、事前登録の方には確定時にお知らせします。</p>
+      <p class="price-fine">※ コア機能（日程・お金の先回り・当落/遠征/立替の管理）はずっと無料。有料は世界観の着せ替え（買い切り 180円）と複数推しの管理（月額 380円）のみ。<strong>表示価格が購入画面と異なる場合は、購入画面の表示が優先します</strong>（プラットフォームの為替・税制により変動することがあります）。詳細は<a href="tokushoho.html">特定商取引法に基づく表記</a>。</p>
     </div>
   </section>
 
@@ -852,7 +852,7 @@ footer{background:#fff;border-top:1px solid var(--line)}
     <div class="wrap">
       <div class="head"><div class="kicker">FAQ</div><h2>よくある質問</h2></div>
       <div class="faq" id="faqList">
-        <div class="qa open"><button type="button"><span>無料で使えますか？</span><span class="pm">−</span></button><div class="ans"><p>はい。参戦カレンダーでの日程管理や、使えるお金の管理、当落シミュを含むコア機能はずっと無料です。有料は世界観の着せ替えと、複数推しの管理（検証中）のみです。</p></div></div>
+        <div class="qa open"><button type="button"><span>無料で使えますか？</span><span class="pm">−</span></button><div class="ans"><p>はい。参戦カレンダーでの日程管理や、使えるお金の管理、当落シミュを含むコア機能はずっと無料です。有料は世界観の着せ替え（買い切り 180円）と、複数推しの管理（月額 380円）のみです。</p></div></div>
         <div class="qa"><button type="button"><span>データはどこに保存されますか？</span><span class="pm">＋</span></button><div class="ans"><p>あなたのスマホの中に保存します。推し活の記録を当社サーバーへ送信することはありません。</p></div></div>
         <div class="qa"><button type="button"><span>Androidは対応していますか？</span><span class="pm">＋</span></button><div class="ans"><p>はい。iOS / Android の両方に対応する予定です。事前登録いただいた方に、対応状況とリリース時期をお知らせします。</p></div></div>
         <div class="qa"><button type="button"><span>マネージャーって、お説教してきませんか？</span><span class="pm">＋</span></button><div class="ans"><p>しません。指図や採点はせず、面倒な計算と段取りを裏方でこなす「黒子」です。決めるのはいつもあなた。画面ロック（PIN/顔認証）など軽い配慮も検討中ですが、まずは日程とお金の管理に集中します。</p></div></div>
@@ -923,33 +923,18 @@ footer{background:#fff;border-top:1px solid var(--line)}
     TRACK_EVENTS: true
   };
 
-  /* ---- 価格 A/B（2群・?p= 指定 or 乱択バケッティング。検出力UPのため3群→2群に削減） ---- */
-  var PRICING = {
-    a: { premium: 380, family: 680, tag: "A" },
-    b: { premium: 580, family: 880, tag: "B" }
-  };
-  var VARIANT = "a";
-  function resolveVariant(){
-    // ?p= があれば優先（インタビュー等で特定変種を見せる用途）。無ければ初回に乱択して固定
-    var url = new URLSearchParams(location.search).get("p");
-    if(url){ url = url.toLowerCase(); if(PRICING[url]){ try{localStorage.setItem("om_variant", url);}catch(e){} return url; } }
-    var saved = null; try{ saved = localStorage.getItem("om_variant"); }catch(e){}
-    if(saved && PRICING[saved]) return saved;
-    var keys = Object.keys(PRICING);
-    var pick = keys[Math.floor(Math.random()*keys.length)];
-    try{ localStorage.setItem("om_variant", pick); }catch(e){}
-    return pick;
-  }
-  function applyPricing(){
-    VARIANT = resolveVariant();
-    var cfg = PRICING[VARIANT] || PRICING.a;
-    var prem = document.getElementById("premPrice");
-    var fam = document.getElementById("famPrice");
-    var v = document.getElementById("planVariant");
-    if(prem) prem.textContent = cfg.premium.toLocaleString();
-    if(fam) fam.textContent = cfg.family.toLocaleString();
-    if(v) v.textContent = cfg.tag;
-  }
+  /* ---- 価格は確定済み（2026-08-22）。A/B は畳んだ ----------------------------
+     もとは 380/680 と 580/880 の2群を**本番で乱択表示**していた。設計当時は
+     「W1 の価格反応を見て人間が決める」前提だったが、CT#152 で「同時リリースに
+     したのでその順番が取れない」と判定され、価格は先に確定した
+     （買い切り ¥180 / サブ ¥380）。**前提が失効した実験を回し続けると、
+     特商法表示（tokushoho.html の確定価格）と本番 LP の表示が食い違う。**
+     実際 2026-08-22 時点で、LP は誰にも売っていない 380/580/680/880 を出していた。
+
+     価格は HTML に直接書く（下の price-grid）。JS は上書きしない。
+     VARIANT は分析イベントが参照しているので定数として残す。 */
+  var VARIANT = "fixed";
+  function applyPricing(){ /* 価格は HTML 側が正。JS からは触らない。 */ }
 
   /* ---- 計測＆送信（POSTボディ方式。PII(メール)をURLに乗せない＋Referer抑制。Apps Script doPostが受信） ---- */
   function send(payload){
