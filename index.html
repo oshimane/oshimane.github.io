@@ -269,7 +269,30 @@ section{scroll-margin-top:76px}
 .detail-link{display:inline-flex;align-items:center;gap:6px;font-weight:900;font-size:13.5px;color:var(--oshi-pink-deep);
   text-decoration:none;min-height:44px}
 .detail-link:hover{text-decoration:underline}
-@media(min-width:760px){.jobs{grid-template-columns:1fr 1fr}}
+/* 実画面つきカード（2026-10-13）: 文字だけだった4枚に、該当画面の実スクショを添える。
+   スマホ=見出し→一言→実画面→箇条書きの順（画面を先に見せる）。PC=右に実画面を固定。
+   .win は画面の「見せたい部分」だけを窓で切る（object-position は --focus で各カードが指定） */
+.job .job-shot{margin:14px 0 6px;display:flex;flex-direction:column;gap:8px}
+.job .job-shot .win{--focus:top;position:relative;aspect-ratio:1/1;border-radius:18px;overflow:hidden;
+  border:1px solid var(--line);box-shadow:0 10px 26px rgba(214,31,105,.10);background:#f7f6fb}
+.job .job-shot .win img{width:100%;height:100%;object-fit:cover;object-position:var(--focus);display:block}
+.job .job-shot .win::after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;
+  background:linear-gradient(to bottom,rgba(255,255,255,0),#fff)}
+.job .job-shot figcaption{font-size:11.5px;font-weight:700;color:var(--ink-muted);line-height:1.6}
+.job .job-shot figcaption b{color:var(--oshi-pink-deep)}
+@media(min-width:760px){
+  .jobs{grid-template-columns:1fr 1fr}
+  .job{display:grid;grid-template-columns:1fr 160px;column-gap:18px;
+    grid-template-areas:"jh shot" "one shot" "blt shot" "cite shot" "detail shot";grid-template-rows:auto auto auto auto 1fr}
+  .job .jh{grid-area:jh}
+  .job .one{grid-area:one}
+  .job .blt{grid-area:blt}
+  .job .cite{grid-area:cite}
+  .job .detail{grid-area:detail;align-self:end}
+  .job .job-shot{grid-area:shot;margin:0}
+  .job .job-shot .win{aspect-ratio:auto;height:320px;border-radius:22px}
+}
+}
 
 /* 使い方 3ステップ */
 .flow{display:grid;grid-template-columns:1fr;gap:16px;margin-top:8px}
@@ -537,13 +560,17 @@ footer{background:#fff;border-top:1px solid var(--line)}
       <div class="head">
         <div class="kicker">WHAT I DO</div>
         <h2>あなたの専属マネージャー、できること。</h2>
-        <div class="tag">「日程」と「3つのお金（使う・貯める・守る）」を、4つの仕事でまるごとおまかせ。</div>
+        <div class="tag">「日程」と「3つのお金（使う・貯める・守る）」を、4つの仕事でまるごとおまかせ。それぞれ、実際の画面と一緒に。</div>
       </div>
       <div class="jobs">
 
         <div class="job">
           <div class="jh"><svg class="ic"><use href="#ic-calendar"></use></svg><div class="scn">予定を、見落とさない</div></div>
           <p class="one">ライブ・配信・発売日・当落発表・各種締切を、ひとつのカレンダーに。</p>
+          <figure class="job-shot">
+            <div class="win" style="--focus:center 28%"><img src="assets/screens/app-calendar.png" alt="参戦カレンダー（月ビュー）の実際の画面" loading="lazy"></div>
+            <figcaption><b>📅 月ビュー</b>｜日程被り・締切もこの画面に<br>※開発中アプリの実際の画面（サンプルデータ）</figcaption>
+          </figure>
           <ul class="blt">
             <li>月／締切／タイムライン／支払いの<b>4つの見方</b>で先回り</li>
             <li>掛け持ちの<b>日程被り</b>・当落より先に来る締切をお知らせ</li>
@@ -555,6 +582,10 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <div class="job">
           <div class="jh"><svg class="ic"><use href="#ic-coin"></use></svg><div class="scn">お金を、見通す</div></div>
           <p class="one">今月あといくら使える？数ヶ月先の谷は？——使う・貯める・守るを、ひと目で。</p>
+          <figure class="job-shot">
+            <div class="win" style="--focus:center top"><img src="assets/screens/app-money.png" alt="お金の見通しの実際の画面" loading="lazy"></div>
+            <figcaption><b>💰 お金の見通し</b>｜今月使えるお金が最初に出る<br>※開発中アプリの実際の画面（サンプルデータ）</figcaption>
+          </figure>
           <ul class="blt">
             <li><b>今月使えるお金</b>を、予算から先回りで把握（使う）</li>
             <li>遠征の<b>積立</b>をゴールから逆算（貯める）</li>
@@ -566,6 +597,10 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <div class="job">
           <div class="jh"><svg class="ic"><use href="#ic-penlight"></use></svg><div class="scn">当落の「もしも」に、備える</div></div>
           <p class="one">「全部当たっても払える？」を、申込む前に。</p>
+          <figure class="job-shot">
+            <div class="win" style="--focus:center 18%"><img src="assets/screens/app-lottery.png" alt="当落（応募・抽選の結果）の実際の画面" loading="lazy"></div>
+            <figcaption><b>🎫 当落</b>｜当選／落選を切り替えて試算<br>※開発中アプリの実際の画面（サンプルデータ）</figcaption>
+          </figure>
           <ul class="blt">
             <li>当選／落選を切り替えて<b>自己負担をシミュ</b></li>
             <li>当落より先に来る宿・交通の締切（<b>遠征チキンレース</b>）を先回り</li>
@@ -576,6 +611,10 @@ footer{background:#fff;border-top:1px solid var(--line)}
         <div class="job">
           <div class="jh"><svg class="ic"><use href="#ic-graph"></use></svg><div class="scn">仲間との立替を、整理する</div></div>
           <p class="one">連番の立替も、同行者との精算も、申込の名義も、すっきりひとつに。</p>
+          <figure class="job-shot">
+            <div class="win" style="--focus:center 40%"><img src="assets/screens/app-settlement.png" alt="立替・精算の記録の実際の画面" loading="lazy"></div>
+            <figcaption><b>🤝 立替</b>｜記録と見える化だけ・送金はしません<br>※開発中アプリの実際の画面（サンプルデータ）</figcaption>
+          </figure>
           <ul class="blt">
             <li>立替の記録と<b>精算の見える化</b>（送金はしません・記録のみ）</li>
             <li>入金期限・名義変更の締切を、先回りでそっとお知らせ</li>
